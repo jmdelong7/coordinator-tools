@@ -8,13 +8,4 @@ export default class DateCalculator {
     this.periods = weeks / 4;
     this.endDate = addDays(this.startDate, this.days);
   }
-
-  omitProperty(property) {
-    const properties = Object.getOwnPropertyNames(this);
-    const filtered = properties.filter((prop) => {
-      return prop !== property;
-    });
-    return filtered;
-  }
-
 }
