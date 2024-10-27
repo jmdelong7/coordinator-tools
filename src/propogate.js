@@ -7,6 +7,10 @@ export default class Propogate {
     return filtered;
   }
 
-  
-
+  static updateProperties(propertiesToUpdate, obj, fn) {
+    const update = propertiesToUpdate.map((property) => {
+      return obj.property = fn(property);
+    });
+    return update;
+  }
 }
