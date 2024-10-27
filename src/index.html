@@ -9,7 +9,51 @@
 </head>
 
 <body>
-  test
+  <div class="date">
+    <div class="date__header">
+      <h2 class="date__title">Date Calculator</h2>
+    </div>
+    <div class="date__content">
+      <div class="date__startend">
+        <div class="date__start">
+          <div class="date__start--inputlabel">
+            <label for="start-date" class="date__label date__label--start">Start Date</label>
+            <input type="date" class="date__input date__input--start" id="start-date">
+          </div>
+          <span class="date__start--subtext">Date</span>
+          <div class="date__start--buttons">
+            <button class="date__start--button date__start--button-previous">Previous Monday</button>
+            <button class="date__start--button date__start--button-next">Next Monday</button>
+          </div>
+        </div>
+        <div class="date__end">
+          <div class="date__end--inputlabel">
+            <label for="end-date" class="date__label date__label--end">End Date</label>
+            <input type="date" class="date__input date__input--end" id="end-date">
+          </div>
+          <span class="date__end--subtext">Date</span>
+        </div>
+      </div>
+      <div class="date__values">
+        <div class="date__days">
+          <label for="date-days" class="date__days--label">Days</label>
+          <input type="number" class="date__days--input" id="date-days">
+        </div>
+        <div class="date__weeks">
+          <label for="date-weeks" class="date__weeks--label">Weeks</label>
+          <input type="number" class="date__weeks--input" id="date-weeks">
+        </div>
+        <div class="date__months">
+          <label for="date-months" class="date__months--label">Months</label>
+          <input type="number" class="date__months--input" id="date-months">
+        </div>
+        <div class="date__periods">
+          <label for="date-periods" class="date__periods--label">Periods</label>
+          <input type="number" class="date__periods--input" id="date-periods">
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
