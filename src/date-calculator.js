@@ -14,8 +14,8 @@ export default class DateCalculator {
 
   #propogateDayDifference(endDate, startDate) {
     const dayDifference = differenceInCalendarDays(endDate, startDate);
-    this.weeks = dayDifference / 7;
     this.days = dayDifference;
+    this.weeks = dayDifference / 7;
     this.periods = dayDifference / 28;
   }
 
