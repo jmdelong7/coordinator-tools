@@ -5,7 +5,7 @@ import {
   previousMonday,
 } from 'date-fns';
 
-export default class DateCalculator {
+class DateCalculator {
   constructor(startDate) {
     this.startDate = startDate;
     this.updateValues({weeks: 4});
@@ -69,5 +69,11 @@ export default class DateCalculator {
   getPreviousMonday() {
     const monday = previousMonday(this.startDate);
     this.updateValues({startDate: monday});
+  }
+}
+
+class DateInterpreter {
+  constructor(startDate) {
+    this.dateCalculator = new DateCalculator(startDate);
   }
 }
