@@ -75,13 +75,46 @@ class DateCalculator {
 class DateDisplay {
   constructor(startDate) {
     this.dateCalculator = new DateCalculator(startDate);
-    this.startDateEl = document.getElementById('start-date');
-    this.endDateEl = document.getElementById('end-date');
-    this.daysEl = document.getElementById('days');
-    this.weeksEl = document.getElementById('weeks');
-    this.periodsEl = document.getElementById('periods');
+    this.startDate = {
+      el: document.getElementById('start-date'),
+      name: 'startDate',
+      val: this.dateCalculator.startDate
+    };
+    this.endDate = {
+      el: document.getElementById('end-date'),
+      name: 'endDate',
+      val: this.dateCalculator.endDate
+    };
+    this.days = {
+      el: document.getElementById('days'),
+      name: 'days',
+      val: this.dateCalculator.days
+    };
+    this.weeks = {
+      el: document.getElementById('weeks'),
+      name: 'weeks',
+      val: this.dateCalculator.weeks
+    };
+    this.periods = {
+      el: document.getElementById('periods'),
+      name: 'periods',
+      val: this.dateCalculator.periods
+    };
   }
 
+  updateDisplay() {
+    this.startDate.el.valueAsDate = this.startDate.val;
+    this.endDate.el.valueAsDate = this.endDate.val;
+    this.days.el.value = this.days.val;
+    this.weeks.el.value = this.weeks.val;
+    this.periods.el.value = this.periods.val;
+  }
+
+  inputListener(input) {
+    input.el.addEventListener('input', () => {
+      this.dateCalculator.updateValues({[input.name]: input.val});
+    });
+  }
 
 }
 
