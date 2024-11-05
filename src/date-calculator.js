@@ -1,6 +1,5 @@
 import {
   add as addDate, 
-  sub as subDate,
   differenceInCalendarDays,
   nextMonday,
   previousMonday,
@@ -27,7 +26,6 @@ export default class DateCalculator {
 
   #updateEndDate(newEndDate) {
     this.endDate = newEndDate;
-    this.startDate = subDate(this.endDate, {weeks: this.weeks});
     this.#propogateDayDifference(newEndDate, this.startDate);
   }
 
@@ -61,22 +59,15 @@ export default class DateCalculator {
     } else if (periods !== null) {
       this.#updatePeriods(periods);
     }
-    this.endDate = subDate(this.endDate, ({days: 1}));
-    if (this.days <= 0) {
-      this.endDate = null;
-      this.weeks = null;
-      this.days = null;
-      this.periods = null;
-    }
   }
 
-  getNextMonday(date) {
-    const monday = nextMonday(date);
+  getNextMonday() {
+    const monday = nextMonday(this.startDate);
     this.updateValues({startDate: monday});
   }
 
-  getPreviousMonday(date) {
-    const monday = previousMonday(date);
+  getPreviousMonday() {
+    const monday = previousMonday(this.startDate);
     this.updateValues({startDate: monday});
   }
 }

@@ -29,8 +29,8 @@ export default class Controller {
       val: this.dateCalculator.periods
     };
 
-    this.startDateInput.el.value = this.startDateInput.val;
-    this.endDateInput.el.value = this.endDateInput.val;
+    this.startDateInput.el.valueAsDate = this.startDateInput.val;
+    this.endDateInput.el.valueAsDate = this.endDateInput.val;
     this.daysInput.el.value = this.daysInput.val;
     this.weeksInput.el.value = this.weeksInput.val;
     this.periodsInput.el.value = this.periodsInput.val;
