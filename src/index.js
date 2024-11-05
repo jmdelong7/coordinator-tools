@@ -1,13 +1,5 @@
-import Controller from "./controller";
+import dateController from "./date-calculator";
 
-const startDateId = 'start-date';
-const endDateId = 'end-date';
-const daysId = 'days';
-const weeksId = 'weeks';
-const periods = 'periods';
-
-const sd = new Date(2024, 11, 30);
-console.log(sd);
-
-const controller = new Controller(sd, startDateId, endDateId, daysId, weeksId, periods);
-window.controller = controller;
+const startDate = new Date(2024, 11, 30);
+const dateInterface = dateController(startDate);
+window.dateInterface = dateInterface;
