@@ -11,40 +11,46 @@ class DateCalculator {
     this.updateValues({weeks: 4});
   }
 
-  #propogateDayDifference(endDate, startDate) {
-    const dayDifference = differenceInCalendarDays(endDate, startDate);
-    this.days = dayDifference;
-    this.weeks = dayDifference / 7;
-    this.periods = dayDifference / 28;
+  #propogateDateDifference(endDate, startDate) {
+    const difference = differenceInCalendarDays(endDate, startDate);
+    this.days = difference;
+    this.weeks = difference / 7;
+    this.periods = difference / 28;
   }
 
   #updateStartDate(newStartDate) {
     this.startDate = newStartDate;
     this.endDate = addDate(this.startDate, {weeks: this.weeks});
-    this.#propogateDayDifference(this.endDate, newStartDate);
+    this.#propogateDateDifference(this.endDate, newStartDate);
   }
 
   #updateEndDate(newEndDate) {
     this.endDate = newEndDate;
-    this.#propogateDayDifference(newEndDate, this.startDate);
+    this.#propogateDateDifference(newEndDate, this.startDate);
   }
   
-    #updateDays(newDaysValue) {
-      this.days = newDaysValue;
-      this.endDate = addDate(this.startDate, {days: newDaysValue});
-      this.#propogateDayDifference(this.endDate, this.startDate);
-    }
+  #updateDays(newDaysValue) {
+    this.days = newDaysValue;
+    this.endDate = addDate(this.startDate, {days: newDaysValue});
+    const difference = differenceInCalendarDays(this.endDate, this.startDate);
+    this.weeks = difference / 7;
+    this.periods = difference / 28;
+  }
 
   #updateWeeks(newWeeksValue) {
     this.weeks = newWeeksValue;
     this.endDate = addDate(this.startDate, {weeks: newWeeksValue});
-    this.#propogateDayDifference(this.endDate, this.startDate);
+    const difference = differenceInCalendarDays(this.endDate, this.startDate);
+    this.days = difference;
+    this.periods = difference / 28;
   }
 
   #updatePeriods(newPeriodsValue) {
     this.periods = newPeriodsValue;
     this.endDate = addDate(this.startDate, {weeks: newPeriodsValue * 4});
-    this.#propogateDayDifference(this.endDate, this.startDate);
+    const difference = differenceInCalendarDays(this.endDate, this.startDate);
+    this.days = difference;
+    this.weeks = difference / 7;
   }
 
   updateValues({startDate = null, endDate = null, weeks = null, days = null, periods = null}) {
@@ -102,6 +108,10 @@ class DateDisplay {
     };
   }
 
+  get inputs() {
+    return [this.startDate, this.endDate, this.days, this.weeks, this.periods];
+  }
+
   updateDisplay() {
     this.startDate.el.valueAsDate = this.startDate.val;
     this.endDate.el.valueAsDate = this.endDate.val;
@@ -110,15 +120,20 @@ class DateDisplay {
     this.periods.el.value = this.periods.val;
   }
 
-  inputListener(input) {
+  addInputListener(input) {
     input.el.addEventListener('input', () => {
+      console.log(input.name, input.val);
       this.dateCalculator.updateValues({[input.name]: input.val});
+      console.log(this.dateCalculator);
     });
+  }
+
+  addListeners(inputs) {
+    inputs.forEach((input) => this.inputListener(input));
   }
 
 }
 
 export default function dateController(startDate) {
-  const dateDisplay = new DateDisplay(startDate);
-  return dateDisplay;
+  return new DateDisplay(startDate);
 }
