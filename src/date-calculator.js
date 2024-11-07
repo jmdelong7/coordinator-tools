@@ -81,55 +81,27 @@ class DateCalculator {
 class DateDisplay {
   constructor(startDate) {
     this.dateCalculator = new DateCalculator(startDate);
-    this.startDate = {
-      el: document.getElementById('start-date'),
-      name: 'startDate',
-      val: this.dateCalculator.startDate
-    };
-    this.endDate = {
-      el: document.getElementById('end-date'),
-      name: 'endDate',
-      val: this.dateCalculator.endDate
-    };
-    this.days = {
-      el: document.getElementById('days'),
-      name: 'days',
-      val: this.dateCalculator.days
-    };
-    this.weeks = {
-      el: document.getElementById('weeks'),
-      name: 'weeks',
-      val: this.dateCalculator.weeks
-    };
-    this.periods = {
-      el: document.getElementById('periods'),
-      name: 'periods',
-      val: this.dateCalculator.periods
-    };
+    this.startDateInput = document.getElementById('start-date');
+    this.endDateInput = document.getElementById('end-date');
+    this.daysInput = document.getElementById('days');
+    this.weeksInput = document.getElementById('weeks');
+    this.periodsInput = document.getElementById('periods');
+    this.updateDisplay();
   }
 
-  get inputs() {
-    return [this.startDate, this.endDate, this.days, this.weeks, this.periods];
-  }
-
-  updateDisplay() {
-    this.startDate.el.valueAsDate = this.startDate.val;
-    this.endDate.el.valueAsDate = this.endDate.val;
-    this.days.el.value = this.days.val;
-    this.weeks.el.value = this.weeks.val;
-    this.periods.el.value = this.periods.val;
+  updateDisplay(name = null, value = null) {
+    this.dateCalculator.updateValues({[name]: value});
+    this.startDateInput.valueAsDate = this.dateCalculator.startDate;
+    this.endDateInput.valueAsDate = this.dateCalculator.endDate;
+    this.daysInput.value = this.dateCalculator.days;
+    this.weeksInput.value = this.dateCalculator.weeks;
+    this.periodsInput.value = this.dateCalculator.periods;
   }
 
   addInputListener(input) {
-    input.el.addEventListener('input', () => {
-      console.log(input.name, input.val);
-      this.dateCalculator.updateValues({[input.name]: input.val});
-      console.log(this.dateCalculator);
+    input.addEventListener('input', (event) => {
+      this.updateDisplay('days', event.value);
     });
-  }
-
-  addListeners(inputs) {
-    inputs.forEach((input) => this.inputListener(input));
   }
 
 }
