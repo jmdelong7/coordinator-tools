@@ -3,11 +3,18 @@ import {
   differenceInCalendarDays,
   nextMonday,
   previousMonday,
+  parseISO,
+  startOfDay
 } from 'date-fns';
+
+function standardizeDate(date) {
+  const standardDate = startOfDay(parseISO(date));
+  return standardDate;
+}
 
 class DateCalculator {
   constructor(startDate) {
-    this.startDate = startDate;
+    this.startDate = standardizeDate(startDate);
     this.updateValues({weeks: 4});
   }
 
@@ -55,9 +62,9 @@ class DateCalculator {
 
   updateValues({startDate = null, endDate = null, weeks = null, days = null, periods = null}) {
     if (startDate !== null) {
-      this.#updateStartDate(startDate);
+      this.#updateStartDate(standardizeDate(startDate));
     } else if (endDate !== null) {
-      this.#updateEndDate(endDate);
+      this.#updateEndDate(standardizeDate(endDate));
     } else if (days !== null) {
       this.#updateDays(days);
     } else if (weeks !== null) {
@@ -81,29 +88,60 @@ class DateCalculator {
 class DateDisplay {
   constructor(startDate) {
     this.dateCalculator = new DateCalculator(startDate);
-    this.startDateInput = document.getElementById('start-date');
-    this.endDateInput = document.getElementById('end-date');
-    this.daysInput = document.getElementById('days');
-    this.weeksInput = document.getElementById('weeks');
-    this.periodsInput = document.getElementById('periods');
-    this.updateDisplay();
+    this.startDate = document.getElementById('start-date');
+    this.endDate = document.getElementById('end-date');
+    this.days = document.getElementById('days');
+    this.weeks = document.getElementById('weeks');
+    this.periods = document.getElementById('periods');
+    this.updateExcept(startDate);
+    this.addListeners();
   }
 
-  updateDisplay(name = null, value = null) {
-    this.dateCalculator.updateValues({[name]: value});
-    this.startDateInput.valueAsDate = this.dateCalculator.startDate;
-    this.endDateInput.valueAsDate = this.dateCalculator.endDate;
-    this.daysInput.value = this.dateCalculator.days;
-    this.weeksInput.value = this.dateCalculator.weeks;
-    this.periodsInput.value = this.dateCalculator.periods;
+  get inputs() {
+    return [this.startDate, this.endDate, this.days, this.weeks, this.periods];
   }
 
-  addInputListener(input) {
-    input.addEventListener('input', (event) => {
-      this.updateDisplay('days', event.value);
+  updateExcept(exclusion) {
+    const updates = {
+      startDate: () => this.startDate.valueAsDate = this.dateCalculator.startDate,
+      endDate: () => this.endDate.valueAsDate = this.dateCalculator.endDate,
+      days: () => this.days.value = this.dateCalculator.days,
+      weeks: () => this.weeks.value = this.dateCalculator.weeks,
+      periods: () => this.periods.value = this.dateCalculator.periods
+    };
+
+    Object.entries(updates).forEach(([name, updateFn]) => {
+      if (name !== exclusion) updateFn();
     });
   }
 
+  addInputListener(inputEle, inputName) {
+    inputEle.addEventListener('input', () => {
+      const val = isNaN(Number(inputEle.value)) ? inputEle.value : Number(inputEle.value);
+      this.dateCalculator.updateValues({[inputName]: val});
+      this.updateExcept(inputName);
+    });
+  }
+
+  addListeners() {
+    const inputs = this.inputs;
+    let inputName = '';
+    inputs.forEach((input) => {
+      if (input === this.startDate) {
+        inputName = 'startDate';
+      } else if (input === this.endDate) {
+        inputName = 'endDate';
+      } else if (input === this.days) {
+        inputName = 'days';
+      } else if (input === this.weeks) {
+        inputName = 'weeks';
+      } else if (input === this.periods) {
+        inputName = 'periods';
+      }
+      this.addInputListener(input, inputName);
+    });
+  }
+  
 }
 
 export default function dateController(startDate) {
