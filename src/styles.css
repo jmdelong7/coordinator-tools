@@ -4,6 +4,18 @@ Has some changes by Kevin Powell, taken from:
 https://github.com/kevin-powell/fem-manage-landing-page-part-1/blob/master/style.css#L44
 https://www.youtube.com/watch?v=h3bTwCqX4ns&ab_channel=KevinPowell
 */
+:root {
+  --color-primary-400: #0A0708;
+  --color-primary-200: #444444;
+
+  --color-accent-300: #747474;
+  --color-accent-100: #B1B1B1;
+
+  --ff-primary: 'Open Sans', sans-serif;
+  --fw-light: 200;
+  --fw-regular: 400;
+  --fw-bold: 800;
+}
 
 /* Box sizing rules */
 *,
@@ -85,4 +97,23 @@ svg {
   font-weight: 300 800;
   /* Light to Extra Bold */
   font-style: italic;
+}
+
+body {
+  font-family: var(--ff-primary);
+  color: var(--color-primary-400);
+  font-weight: var(--fw-light);
+}
+
+.date {
+  border: 1px solid orange;
+  display: flex;
+  flex-direction: column;
+  width: 325px;
+  padding: 10px;
+}
+
+.date__header {
+  text-align: center;
+  margin: 5px 0;
 }
