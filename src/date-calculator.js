@@ -4,7 +4,8 @@ import {
   nextMonday,
   previousMonday,
   parseISO,
-  startOfDay
+  startOfDay,
+  format
 } from 'date-fns';
 
 function standardizeDate(date) {
@@ -74,25 +75,31 @@ class DateCalculator {
     }
   }
 
-  getNextMonday() {
-    const monday = nextMonday(this.startDate);
+  getPrevMonday() {
+    const monday = format(previousMonday(this.startDate), 'yyyy-MM-dd');
     this.updateValues({startDate: monday});
   }
 
-  getPreviousMonday() {
-    const monday = previousMonday(this.startDate);
+  getNextMonday() {
+    const monday = format(nextMonday(this.startDate), 'yyyy-MM-dd');
     this.updateValues({startDate: monday});
   }
+
 }
 
 class DateDisplay {
   constructor(startDate) {
     this.dateCalculator = new DateCalculator(startDate);
+
     this.startDate = document.getElementById('start-date');
     this.endDate = document.getElementById('end-date');
     this.days = document.getElementById('days');
     this.weeks = document.getElementById('weeks');
     this.periods = document.getElementById('periods');
+
+    this.prevMonday = document.getElementById('prev-monday');
+    this.nextMonday = document.getElementById('next-monday');
+    
     this.updateExcept(startDate);
     this.addListeners();
   }
@@ -120,6 +127,21 @@ class DateDisplay {
       const val = isNaN(Number(inputEle.value)) ? inputEle.value : Number(inputEle.value);
       this.dateCalculator.updateValues({[inputName]: val});
       this.updateExcept(inputName);
+      console.log(this.dateCalculator);
+    });
+  }
+
+  addPrevListener() {
+    this.prevMonday.addEventListener('click', () => {
+      this.dateCalculator.getPrevMonday();
+      this.updateExcept();
+    });
+  }
+
+  addNextListener() {
+    this.nextMonday.addEventListener('click', () => {
+      this.dateCalculator.getNextMonday();
+      this.updateExcept();
     });
   }
 
@@ -140,8 +162,10 @@ class DateDisplay {
       }
       this.addInputListener(input, inputName);
     });
+    this.addPrevListener();
+    this.addNextListener();
   }
-  
+
 }
 
 export default function dateController(startDate) {
