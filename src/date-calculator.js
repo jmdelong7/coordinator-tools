@@ -127,7 +127,6 @@ class DateDisplay {
       const val = isNaN(Number(inputEle.value)) ? inputEle.value : Number(inputEle.value);
       this.dateCalculator.updateValues({[inputName]: val});
       this.updateExcept(inputName);
-      console.log(this.dateCalculator);
     });
   }
 
