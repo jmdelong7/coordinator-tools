@@ -9,12 +9,16 @@ https://www.youtube.com/watch?v=h3bTwCqX4ns&ab_channel=KevinPowell
   --color-primary-200: #444444;
 
   --color-accent-300: #747474;
-  --color-accent-100: #B1B1B1;
+  --color-accent-100: #d1d1d1;
 
   --ff-primary: 'Open Sans', sans-serif;
   --fw-light: 200;
   --fw-regular: 400;
   --fw-bold: 800;
+
+  --fs-primary: 16px;
+  --fs-smaller: 14px;
+  --fs-bigger: 18px;
 }
 
 /* Box sizing rules */
@@ -97,66 +101,4 @@ svg {
   font-weight: 300 800;
   /* Light to Extra Bold */
   font-style: italic;
-}
-
-body {
-  font-family: var(--ff-primary);
-  color: var(--color-primary-400);
-  font-weight: var(--fw-light);
-}
-
-input {
-  padding: 5px;
-}
-
-input[type='date'] {
-  width: 125px;
-}
-
-.date {
-  border: 1px solid orange;
-  display: flex;
-  flex-direction: column;
-  width: 500px;
-  padding: 10px;
-}
-
-.date__content {
-  display: flex;
-  flex-direction: column;
-}
-
-.date__header {
-  margin: 5px;
-}
-
-.date__values {
-  margin: 5px;
-  display: flex;
-}
-
-.date__values>* {
-  margin: 0 10px;
-}
-
-.date__values input {
-  width: 65px;
-}
-
-.date__startend {
-  display: flex;
-}
-
-.date__start,
-.date__end {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-}
-
-.date__end--inputlabel {
-  grid-row: 2/3;
-}
-
-.date__end--subtext {
-  grid-row: 3/4;
 }
