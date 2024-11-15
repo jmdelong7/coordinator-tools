@@ -105,15 +105,58 @@ body {
   font-weight: var(--fw-light);
 }
 
+input {
+  padding: 5px;
+}
+
+input[type='date'] {
+  width: 125px;
+}
+
 .date {
   border: 1px solid orange;
   display: flex;
   flex-direction: column;
-  width: 325px;
+  width: 500px;
   padding: 10px;
 }
 
+.date__content {
+  display: flex;
+  flex-direction: column;
+}
+
 .date__header {
-  text-align: center;
-  margin: 5px 0;
+  margin: 5px;
+}
+
+.date__values {
+  margin: 5px;
+  display: flex;
+}
+
+.date__values>* {
+  margin: 0 10px;
+}
+
+.date__values input {
+  width: 65px;
+}
+
+.date__startend {
+  display: flex;
+}
+
+.date__start,
+.date__end {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.date__end--inputlabel {
+  grid-row: 2/3;
+}
+
+.date__end--subtext {
+  grid-row: 3/4;
 }
