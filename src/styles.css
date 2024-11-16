@@ -5,20 +5,31 @@ https://github.com/kevin-powell/fem-manage-landing-page-part-1/blob/master/style
 https://www.youtube.com/watch?v=h3bTwCqX4ns&ab_channel=KevinPowell
 */
 :root {
-  --color-primary-400: #0A0708;
-  --color-primary-200: #444444;
+  /* Primary colors */
+  --color-primary-dark: #63caf3;
+  --color-primary-medium: #a0dcf7;
+  --color-primary-light: #c1e7fa;
 
-  --color-accent-300: #747474;
-  --color-accent-100: #d1d1d1;
+  /* Surface colors */
+  --color-surface-dark: #121212;
+  --color-surface-medium: #575757;
+  --color-surface-light: #8b8b8b;
 
+  /* Text color */
+  --color-text: #FFFFFF;
+
+  /* Font family */
   --ff-primary: 'Open Sans', sans-serif;
-  --fw-light: 200;
-  --fw-regular: 400;
-  --fw-bold: 800;
 
-  --fs-primary: 16px;
-  --fs-smaller: 14px;
-  --fs-bigger: 18px;
+  /* Font weight */
+  --fw-thin: 300;
+  --fw-regular: 500;
+  --fw-bold: 700;
+
+  /* Font size */
+  --fs-small: 14px;
+  --fs-regular: 16px;
+  --fs-large: 24px;
 }
 
 /* Box sizing rules */
@@ -90,7 +101,7 @@ svg {
 @font-face {
   font-family: 'Open Sans';
   src: url('./fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf');
-  font-weight: 300 800;
+  font-weight: 300 700;
   /* Light to Extra Bold */
   font-style: normal;
 }
@@ -98,7 +109,102 @@ svg {
 @font-face {
   font-family: 'Open Sans';
   src: url('./fonts/Open_Sans/OpenSans-Italic-VariableFont_wdth\,wght.ttf');
-  font-weight: 300 800;
+  font-weight: 300 700;
   /* Light to Extra Bold */
   font-style: italic;
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-surface-dark);
+  font-family: var(--ff-primary);
+}
+
+.date {
+  margin: 10px;
+}
+
+.date-header {
+  margin-bottom: 20px;
+}
+
+.date-title {
+  font-size: var(--fs-large);
+  font-weight: var(--fw-bold);
+}
+
+.date-content {
+  font-weight: var(--fw-thin);
+}
+
+.date-values {
+  display: flex;
+}
+
+.date-values>div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.date-weeks,
+.date-periods {
+  margin-left: 10px;
+}
+
+.date-values>div>label {
+  margin-bottom: 5px;
+}
+
+.date-values>div>input {
+  width: 75px;
+  padding: 0 5px;
+  border: none;
+  border-radius: 5px;
+  color: var(--color-text);
+  background-color: var(--color-surface-medium);
+  font-weight: var(--fw-regular);
+}
+
+.date-start-buttons {
+  margin-bottom: 20px;
+}
+
+.date-start-button {
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--color-primary-light);
+  font-weight: var(--fw-regular);
+}
+
+.date-start-button-next {
+  margin-left: 10px;
+}
+
+.date-startend {
+  display: flex;
+}
+
+.date-startend-inputlabel {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-end {
+  margin-left: 10px;
+}
+
+.date-startend-input {
+  color: var(--color-text);
+  background-color: var(--color-surface-medium);
+  font-weight: var(--fw-regular);
+  border: none;
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+.date-startend-inputlabel>label,
+.date-startend-input {
+  margin-bottom: 5px;
 }
