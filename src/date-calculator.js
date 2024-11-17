@@ -1,5 +1,6 @@
 import {
-  add as addDate, 
+  add as addDate,
+  sub as subDate, 
   differenceInCalendarDays,
   nextMonday,
   previousMonday,
@@ -116,7 +117,7 @@ class DateDisplay {
   }
 
   get longEndDate() {
-    return format(this.dateCalculator.endDate, 'PPPP');
+    return format(standardizeDate(this.endDate.value), 'PPPP');
   }
 
   updateLongDates() {
@@ -127,7 +128,7 @@ class DateDisplay {
   updateExcept(exclusion) {
     const updates = {
       startDate: () => this.startDate.valueAsDate = this.dateCalculator.startDate,
-      endDate: () => this.endDate.valueAsDate = this.dateCalculator.endDate,
+      endDate: () => this.endDate.valueAsDate = subDate(this.dateCalculator.endDate, {days: 1}),
       days: () => this.days.value = this.dateCalculator.days,
       weeks: () => this.weeks.value = this.dateCalculator.weeks,
       periods: () => this.periods.value = this.dateCalculator.periods
@@ -138,6 +139,10 @@ class DateDisplay {
     });
 
     this.updateLongDates();
+  }
+
+  updateDisplay() {
+
   }
 
   addInputListener(inputEle, inputName) {

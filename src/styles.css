@@ -5,10 +5,8 @@ https://github.com/kevin-powell/fem-manage-landing-page-part-1/blob/master/style
 https://www.youtube.com/watch?v=h3bTwCqX4ns&ab_channel=KevinPowell
 */
 :root {
-  /* Primary colors */
-  --color-primary-dark: #63caf3;
-  --color-primary-medium: #a0dcf7;
-  --color-primary-light: #c1e7fa;
+  /* Background colors */
+  --color-background-main: #303030;
 
   /* Surface colors */
   --color-surface-dark: #121212;
@@ -118,6 +116,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-surface-dark);
   font-family: var(--ff-primary);
+  background-color: var(--color-background-main);
 }
 
 .date {
@@ -174,7 +173,8 @@ body {
   padding: 5px 15px;
   border-radius: 5px;
   border: none;
-  background-color: var(--color-primary-light);
+  background-color: var(--color-surface-medium);
+  color: var(--color-text);
   font-weight: var(--fw-regular);
   cursor: pointer;
 }
