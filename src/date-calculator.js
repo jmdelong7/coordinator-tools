@@ -99,6 +99,9 @@ class DateDisplay {
 
     this.prevMonday = document.getElementById('prev-monday');
     this.nextMonday = document.getElementById('next-monday');
+
+    this.longStart = document.getElementById('date-start-long');
+    this.longEnd = document.getElementById('date-end-long');
     
     this.updateExcept(startDate);
     this.addListeners();
@@ -108,6 +111,19 @@ class DateDisplay {
     return [this.startDate, this.endDate, this.days, this.weeks, this.periods];
   }
 
+  get longStartDate() {
+    return format(this.dateCalculator.startDate, 'PPPP');
+  }
+
+  get longEndDate() {
+    return format(this.dateCalculator.endDate, 'PPPP');
+  }
+
+  updateLongDates() {
+    this.longStart.textContent = this.longStartDate;
+    this.longEnd.textContent = this.longEndDate;
+  }
+  
   updateExcept(exclusion) {
     const updates = {
       startDate: () => this.startDate.valueAsDate = this.dateCalculator.startDate,
@@ -120,6 +136,8 @@ class DateDisplay {
     Object.entries(updates).forEach(([name, updateFn]) => {
       if (name !== exclusion) updateFn();
     });
+
+    this.updateLongDates();
   }
 
   addInputListener(inputEle, inputName) {
