@@ -210,3 +210,8 @@ body {
 .date-startend-input {
   margin-bottom: 5px;
 }
+
+.date-start,
+.date-end {
+  width: 230px;
+}
