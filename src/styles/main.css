@@ -98,7 +98,7 @@ svg {
 /* New Styles */
 @font-face {
   font-family: 'Open Sans';
-  src: url('./fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf');
+  src: url('../fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf');
   font-weight: 300 700;
   /* Light to Extra Bold */
   font-style: normal;
@@ -106,7 +106,7 @@ svg {
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('./fonts/Open_Sans/OpenSans-Italic-VariableFont_wdth\,wght.ttf');
+  src: url('../fonts/Open_Sans/OpenSans-Italic-VariableFont_wdth\,wght.ttf');
   font-weight: 300 700;
   /* Light to Extra Bold */
   font-style: italic;
@@ -117,101 +117,4 @@ body {
   background-color: var(--color-surface-dark);
   font-family: var(--ff-primary);
   background-color: var(--color-background-main);
-}
-
-.date {
-  margin: 10px;
-}
-
-.date-header {
-  margin-bottom: 20px;
-}
-
-.date-title {
-  font-size: var(--fs-large);
-  font-weight: var(--fw-bold);
-}
-
-.date-content {
-  font-weight: var(--fw-thin);
-}
-
-.date-values {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.date-values>div {
-  display: flex;
-  flex-direction: column;
-}
-
-.date-weeks,
-.date-periods {
-  margin-left: 10px;
-}
-
-.date-values>div>label {
-  margin-bottom: 5px;
-}
-
-.date-values>div>input {
-  width: 75px;
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-  color: var(--color-text);
-  background-color: var(--color-surface-medium);
-  font-weight: var(--fw-regular);
-}
-
-.date-start-buttons {
-  margin-bottom: 20px;
-}
-
-.date-start-button {
-  padding: 5px 15px;
-  border-radius: 5px;
-  border: none;
-  background-color: var(--color-surface-medium);
-  color: var(--color-text);
-  font-weight: var(--fw-regular);
-  cursor: pointer;
-}
-
-.date-start-button-next {
-  margin-left: 10px;
-}
-
-.date-startend {
-  display: flex;
-}
-
-.date-startend-inputlabel {
-  display: flex;
-  flex-direction: column;
-}
-
-.date-end {
-  margin-left: 10px;
-}
-
-.date-startend-input {
-  color: var(--color-text);
-  background-color: var(--color-surface-medium);
-  font-weight: var(--fw-regular);
-  border: none;
-  padding: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.date-startend-inputlabel>label,
-.date-startend-input {
-  margin-bottom: 5px;
-}
-
-.date-start,
-.date-end {
-  width: 230px;
 }

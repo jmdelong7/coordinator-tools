@@ -1,0 +1,134 @@
+/*
+
+// Background colors
+--color-background-main: #303030;
+
+// Surface colors
+--color-surface-dark: #121212;
+--color-surface-medium: #575757;
+--color-surface-light: #8b8b8b;
+
+// Text color
+--color-text: #FFFFFF;
+
+// Font family
+--ff-primary: 'Open Sans', sans-serif;
+
+// Font weights
+--fw-thin: 300;
+--fw-regular: 500;
+--fw-bold: 700;
+
+// Font sizes
+--fs-small: 14px;
+--fs-regular: 16px;
+--fs-large: 24px;
+
+*/
+
+input,
+button {
+  box-shadow: 5px 3px 7px rgba(0, 0, 0, 0.125);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.date-calculator {
+  margin: 10px;
+  border: 1px solid black;
+  width: 530px;
+}
+
+.date-header {
+  margin-bottom: 20px;
+}
+
+.date-title {
+  font-size: var(--fs-large);
+  font-weight: var(--fw-bold);
+}
+
+.date-content {
+  font-weight: var(--fw-thin);
+}
+
+.date-values {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.date-values>div {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-weeks,
+.date-periods {
+  margin-left: 10px;
+}
+
+.date-values>div>label {
+  margin-bottom: 5px;
+}
+
+.date-periods span {
+  color: var(--color-surface-light);
+  font-size: var(--fs-small);
+  font-style: italic;
+}
+
+.date-values>div>input {
+  width: 75px;
+  padding: 5px;
+  border: none;
+  color: var(--color-text);
+  background-color: var(--color-surface-medium);
+  font-weight: var(--fw-regular);
+}
+
+.date-start-buttons {
+  margin-bottom: 20px;
+}
+
+.date-start-button {
+  padding: 5px 15px;
+  border: none;
+  background-color: var(--color-surface-medium);
+  color: var(--color-text);
+  font-weight: var(--fw-regular);
+}
+
+.date-start-button-next {
+  margin-left: 10px;
+}
+
+.date-startend {
+  display: flex;
+}
+
+.date-startend-inputlabel {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-end {
+  margin-left: 10px;
+}
+
+.date-startend-input {
+  color: var(--color-text);
+  background-color: var(--color-surface-medium);
+  font-weight: var(--fw-regular);
+  border: none;
+  padding: 5px;
+}
+
+.date-startend-inputlabel>label,
+.date-startend-input {
+  margin-bottom: 5px;
+}
+
+.date-start,
+.date-end {
+  width: 265px;
+}
