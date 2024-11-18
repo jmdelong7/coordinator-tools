@@ -147,7 +147,11 @@ class DateDisplay {
 
   addInputListener(inputEle, inputName) {
     inputEle.addEventListener('input', () => {
-      const val = isNaN(Number(inputEle.value)) ? inputEle.value : Number(inputEle.value);
+      let val = isNaN(Number(inputEle.value)) ? inputEle.value : Number(inputEle.value);
+      if (inputEle === this.endDate) {
+        let standardDatePlusOne = addDate(standardizeDate(val), {days: 1});
+        val = format(standardDatePlusOne, 'yyyy-MM-dd');
+      }
       this.dateCalculator.updateValues({[inputName]: val});
       this.updateExcept(inputName);
     });
