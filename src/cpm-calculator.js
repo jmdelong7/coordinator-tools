@@ -22,5 +22,5 @@ class CpmDisplay {
 }
 
 export default function cpmController() {
-  return new CpmDisplay();
+  return cpmCalculator;
 }
