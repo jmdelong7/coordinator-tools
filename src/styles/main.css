@@ -9,7 +9,7 @@ https://www.youtube.com/watch?v=h3bTwCqX4ns&ab_channel=KevinPowell
   --color-background-main: #303030;
 
   /* Surface colors */
-  --color-surface-dark: #121212;
+  --color-surface-dark: #37373a;
   --color-surface-medium: #575757;
   --color-surface-light: #8b8b8b;
 
@@ -117,4 +117,11 @@ body {
   background-color: var(--color-surface-dark);
   font-family: var(--ff-primary);
   background-color: var(--color-background-main);
+}
+
+input,
+button {
+  box-shadow: 5px 3px 7px rgba(0, 0, 0, 0.125);
+  border-radius: 5px;
+  cursor: pointer;
 }

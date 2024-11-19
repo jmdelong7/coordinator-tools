@@ -4,7 +4,7 @@
 --color-background-main: #303030;
 
 // Surface colors
---color-surface-dark: #121212;
+--color-surface-dark: #37373a;
 --color-surface-medium: #575757;
 --color-surface-light: #8b8b8b;
 
@@ -26,17 +26,13 @@
 
 */
 
-input,
-button {
-  box-shadow: 5px 3px 7px rgba(0, 0, 0, 0.125);
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 .date-calculator {
   margin: 10px;
-  border: 1px solid black;
-  width: 530px;
+  padding: 15px;
+  width: fit-content;
+  background-color: var(--color-surface-dark);
+  border-radius: 5px;
+  box-shadow: 5px 3px 7px rgba(0, 0, 0, 0.125);
 }
 
 .date-header {
