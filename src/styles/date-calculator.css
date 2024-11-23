@@ -67,12 +67,6 @@
   margin-bottom: 5px;
 }
 
-.date-periods span {
-  color: var(--color-surface-light);
-  font-size: var(--fs-small);
-  font-style: italic;
-}
-
 .date-values>div>input {
   width: 75px;
   padding: 5px;
