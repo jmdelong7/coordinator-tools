@@ -1,6 +1,5 @@
 function cpmCalculator({budget = null, cpm = null, impressions = null}) {
   if (budget === null) {
-    budget = (impressions / 1000) * cpm;
   } else if (cpm === null) {
     cpm = (budget / impressions) * 1000;
   } else if (impressions === null) {
@@ -11,13 +10,15 @@ function cpmCalculator({budget = null, cpm = null, impressions = null}) {
 
 class CpmDisplay {
   constructor() {
-    this.budget = null;
-    this.cpm = null;
-    this.impressions = null;
+    this.budget = document.getElementById('budget');
+    this.cpm = document.getElementById('cpm');
+    this.impressions = document.getElementById('impressions');
+
   }
 
   calculate({budget = null, cpm = null, impressions = null}) {
-    
+    cpmCalculator(budget, cpm, impressions);
+    this.budget.value = budget;
   }
 }
 

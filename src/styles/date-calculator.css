@@ -32,7 +32,7 @@
   width: fit-content;
   background-color: var(--color-surface-dark);
   border-radius: 5px;
-  box-shadow: 5px 3px 7px rgba(0, 0, 0, 0.125);
+  box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.125);
 }
 
 .date-header {
@@ -76,7 +76,6 @@
 .date-values>div>input {
   width: 75px;
   padding: 5px;
-  border: none;
   color: var(--color-text);
   background-color: var(--color-surface-medium);
   font-weight: var(--fw-regular);
@@ -88,7 +87,6 @@
 
 .date-start-button {
   padding: 5px 15px;
-  border: none;
   background-color: var(--color-surface-medium);
   color: var(--color-text);
   font-weight: var(--fw-regular);
@@ -115,7 +113,6 @@
   color: var(--color-text);
   background-color: var(--color-surface-medium);
   font-weight: var(--fw-regular);
-  border: none;
   padding: 5px;
 }
 

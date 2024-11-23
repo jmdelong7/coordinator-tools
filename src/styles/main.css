@@ -121,7 +121,13 @@ body {
 
 input,
 button {
-  box-shadow: 5px 3px 7px rgba(0, 0, 0, 0.125);
+  box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.125);
   border-radius: 5px;
   cursor: pointer;
+  border: 1px solid transparent;
+}
+
+input:hover,
+button:hover {
+  border: 1px solid var(--color-surface-light);
 }
