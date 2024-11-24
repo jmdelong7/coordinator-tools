@@ -141,10 +141,6 @@ class DateDisplay {
     this.updateLongDates();
   }
 
-  updateDisplay() {
-
-  }
-
   addInputListener(inputEle, inputName) {
     inputEle.addEventListener('input', () => {
       let val = isNaN(Number(inputEle.value)) ? inputEle.value : Number(inputEle.value);
