@@ -1,0 +1,12 @@
+.cpm-value-error-container {
+  color: var(--color-error);
+  font-weight: var(--fw-regular);
+}
+
+#cpm-value-error {
+  visibility: hidden;
+}
+
+#cpm-value-error.show {
+  visibility: visible;
+}

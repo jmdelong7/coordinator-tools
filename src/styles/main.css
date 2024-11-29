@@ -15,6 +15,7 @@ https://www.youtube.com/watch?v=h3bTwCqX4ns&ab_channel=KevinPowell
 
   /* Text color */
   --color-text: #FFFFFF;
+  --color-error: #e12222;
 
   /* Font family */
   --ff-primary: 'Open Sans', sans-serif;
