@@ -60,7 +60,7 @@
 
 .date-weeks,
 .date-periods {
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .date-values>div>label {
@@ -68,6 +68,7 @@
 }
 
 .date-values>div>input {
+  border: 2px solid transparent;
   width: 75px;
   padding: 5px;
   color: var(--color-text);
@@ -75,8 +76,13 @@
   font-weight: var(--fw-regular);
 }
 
+.date-values>div>input:hover {
+  border: 2px solid var(--color-surface-light);
+}
+
 .date-start-buttons {
   margin-bottom: 20px;
+  padding-top: 6px;
 }
 
 .date-start-button {
@@ -85,6 +91,11 @@
   color: var(--color-text);
   font-weight: var(--fw-regular);
   cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.date-start-button:hover {
+  border: 2px solid var(--color-surface-light);
 }
 
 .date-start-button:active {
@@ -97,6 +108,7 @@
 
 .date-startend {
   display: flex;
+  padding-top: 6px;
 }
 
 .date-startend-inputlabel {
@@ -105,15 +117,20 @@
 }
 
 .date-end {
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .date-startend-input {
+  border: 2px solid transparent;
   color: var(--color-text);
   background-color: var(--color-surface-medium);
   font-weight: var(--fw-regular);
   padding: 5px;
   cursor: text;
+}
+
+.date-startend-input:hover {
+  border: 2px solid var(--color-surface-light);
 }
 
 .date-startend-inputlabel>label,

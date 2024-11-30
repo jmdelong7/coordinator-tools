@@ -1,6 +1,110 @@
+/*
+
+// Background colors
+--color-background-main: #303030;
+
+// Surface colors
+--color-surface-dark: #37373a;
+--color-surface-medium: #575757;
+--color-surface-light: #8b8b8b;
+
+// Text color
+--color-text: #FFFFFF;
+
+// Font family
+--ff-primary: 'Open Sans', sans-serif;
+
+// Font weights
+--fw-thin: 300;
+--fw-regular: 500;
+--fw-bold: 700;
+
+// Font sizes
+--fs-small: 14px;
+--fs-regular: 16px;
+--fs-large: 24px;
+
+*/
+
+.cpm-calculator {
+  margin: 10px;
+  padding: 15px;
+  width: fit-content;
+  background-color: var(--color-surface-dark);
+  border-radius: 5px;
+  box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.125);
+}
+
+.cpm-header {
+  margin-bottom: 20px;
+}
+
+.cpm-title {
+  font-size: var(--fs-large);
+  font-weight: var(--fw-bold);
+}
+
+.cpm-content {
+  font-weight: var(--fw-thin);
+}
+
+.cpm-inputlabels {
+  display: flex;
+}
+
+.cpm-inputlabels>div {
+  display: flex;
+  flex-direction: column;
+}
+
+.cpm-inputlabel,
+.impressions-inputlabel {
+  margin-left: 15px;
+}
+
+.cpm-inputlabels>div>label {
+  margin-bottom: 5px;
+}
+
+.cpm-inputlabels>div>input {
+  border: 2px solid transparent;
+  width: 75px;
+  padding: 5px;
+  color: var(--color-text);
+  background-color: var(--color-surface-medium);
+  font-weight: var(--fw-regular);
+}
+
+.cpm-inputlabels>div>input:hover {
+  border: 2px solid var(--color-surface-light);
+}
+
+.cpm-inputlabels>div>input.show {
+  border: 2px solid var(--color-error);
+}
+
+.cpm-button {
+  padding: 5px 15px;
+  background-color: var(--color-surface-medium);
+  color: var(--color-text);
+  font-weight: var(--fw-regular);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.cpm-button:hover {
+  border: 2px solid var(--color-surface-light);
+}
+
+.cpm-button:active {
+  transform: scale(0.95);
+}
+
 .cpm-value-error-container {
   color: var(--color-error);
+  font-size: var(--fs-small);
   font-weight: var(--fw-regular);
+  padding: 3px 0;
 }
 
 #cpm-value-error {
@@ -9,4 +113,8 @@
 
 #cpm-value-error.show {
   visibility: visible;
+}
+
+#clear {
+  margin-left: 10px;
 }

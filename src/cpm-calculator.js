@@ -36,10 +36,14 @@ class CpmDisplay {
 
   showValueError(show) { 
     const valueError = document.getElementById('cpm-value-error');
+    const cpmInputs = document.querySelectorAll('.cpm-inputlabels>div>input');
+    const cpmInputNodes = [...cpmInputs];
     if (show === true) {
       valueError.classList.add('show');
+      cpmInputNodes.forEach((node) => node.classList.add('show'));
     } else if (show === false) {
       valueError.classList.remove('show');
+      cpmInputNodes.forEach((node) => node.classList.remove('show'));
     }
   } 
 

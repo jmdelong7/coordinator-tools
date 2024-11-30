@@ -124,10 +124,4 @@ input,
 button {
   box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.125);
   border-radius: 5px;
-  border: 1px solid transparent;
-}
-
-input:hover,
-button:hover {
-  border: 1px solid var(--color-surface-light);
 }
