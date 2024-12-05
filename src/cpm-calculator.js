@@ -3,13 +3,27 @@ function roundToDecimals(number, decimals) {
   return Math.round(number * factor) / factor;
 }
 
+function addStrCommas(str) {
+  const [int, dec] = str.split('.');
+  const intSplit = int.split('');
+  for (let i = intSplit.length; i > 0; i -= 3) {
+    i !== intSplit.length && intSplit.splice(i, 0, ',');
+  }
+  
+  if (dec === undefined || dec === '') {
+    return intSplit.join('');
+  }
+  
+  return intSplit.join('') + '.' + dec;
+}
+
 function cpmCalculator({budget = null, cpm = null, impressions = null}) {
   if (budget === null) {
     budget = roundToDecimals((impressions / 1000) * cpm, 2);
   } else if (cpm === null) {
     cpm = roundToDecimals((budget / impressions) * 1000, 2);
   } else if (impressions === null) {
-    impressions = roundToDecimals((budget / cpm) * 1000, 2);
+    impressions = roundToDecimals((budget / cpm) * 1000, 0);
   }
   return {budget, cpm, impressions};
 }

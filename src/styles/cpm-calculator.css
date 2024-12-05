@@ -68,7 +68,7 @@
 
 .cpm-inputlabels>div>input {
   border: 2px solid transparent;
-  width: 75px;
+  width: 150px;
   padding: 5px;
   color: var(--color-text);
   background-color: var(--color-surface-medium);

@@ -118,6 +118,7 @@ body {
   background-color: var(--color-surface-dark);
   font-family: var(--ff-primary);
   background-color: var(--color-background-main);
+  height: 100%;
 }
 
 input,
