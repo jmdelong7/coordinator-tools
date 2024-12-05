@@ -31,8 +31,12 @@ function cpmCalculator({budget = null, cpm = null, impressions = null}) {
 class CpmDisplay {
   constructor() {
     this.budget = document.getElementById('budget');
+    this.budgetDigits = document.querySelector('.budget-digits');
     this.cpm = document.getElementById('cpm');
+    this.cpmDigits = document.querySelector('.cpm-digits');
     this.impressions = document.getElementById('impressions');
+    this.impressionsDigits = document.querySelector('.impression-digits');
+
     this.calculate = document.getElementById('calculate');
     this.clear = document.getElementById('clear');
     [this.budget, this.cpm, this.impressions].map((input) => input.value = 0);
@@ -81,11 +85,27 @@ class CpmDisplay {
     if (newValues) {
       this.budget.value = newValues.budget;
       this.cpm.value = newValues.cpm;
-      this.impressions.value = newValues.impressions;  
+      this.impressions.value = newValues.impressions;
+      this.budgetDigits.textContent = addStrCommas(this.budget.value);
+      this.cpmDigits.textContent = addStrCommas(this.cpm.value);
+      this.impressionsDigits.textContent = addStrCommas(this.impressions.value);
     }
   }
 
+  showCommaValueListeners() {
+    this.budget.addEventListener('input', () => {
+      this.budgetDigits.textContent = addStrCommas(this.budget.value);
+    });
+    this.cpm.addEventListener('input', () => {
+      this.cpmDigits.textContent = addStrCommas(this.cpm.value);
+    });
+    this.impressions.addEventListener('input', () => {
+      this.impressionsDigits.textContent = addStrCommas(this.impressions.value);
+    });
+  }
+
   addListeners() {
+    this.showCommaValueListeners();
     this.calculate.addEventListener('click', () => {
       this.updateValues();
     });
@@ -94,6 +114,9 @@ class CpmDisplay {
       this.budget.value = 0;
       this.cpm.value = 0;
       this.impressions.value = 0;
+      this.budgetDigits.textContent = 0;
+      this.cpmDigits.textContent = 0;
+      this.impressionsDigits.textContent = 0;
     });
   }
 }
