@@ -8,6 +8,7 @@ import {
   startOfDay,
   format
 } from 'date-fns';
+import { roundToDecimals } from "./cpm-calculator";
 
 function standardizeDate(date) {
   const standardDate = startOfDay(parseISO(date));
@@ -21,7 +22,8 @@ class DateCalculator {
   }
 
   #propogateDateDifference(endDate, startDate) {
-    const difference = differenceInCalendarDays(endDate, startDate);
+    let difference = differenceInCalendarDays(endDate, startDate);
+    difference < 1 ? difference = 0 : difference;
     this.days = difference;
     this.weeks = difference / 7;
     this.periods = difference / 28;
@@ -139,9 +141,9 @@ class DateDisplay {
     const updates = {
       startDate: () => this.startDate.valueAsDate = this.dateCalculator.startDate,
       endDate: () => this.endDate.valueAsDate = subDate(this.dateCalculator.endDate, {days: 1}),
-      days: () => this.days.value = this.dateCalculator.days,
-      weeks: () => this.weeks.value = this.dateCalculator.weeks,
-      periods: () => this.periods.value = this.dateCalculator.periods
+      days: () => this.days.value = roundToDecimals(this.dateCalculator.days, 3),
+      weeks: () => this.weeks.value = roundToDecimals(this.dateCalculator.weeks, 3),
+      periods: () => this.periods.value = roundToDecimals(this.dateCalculator.periods, 3)
     };
 
     Object.entries(updates).forEach(([name, updateFn]) => {

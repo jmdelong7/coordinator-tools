@@ -17,15 +17,18 @@
       <div class="date-values">
         <div class="date-days">
           <label for="days" class="date-days-label date-values-label">Days</label>
-          <input type="number" class="date-days-input date-values-input" id="days" max="279972">
+          <input type="number" class="date-days-input date-values-input" id="days" max="279972" min="1"
+            onkeyup="if(this.value > 279972 || this.value < 1) this.value = ''">
         </div>
         <div class="date-weeks">
           <label for="weeks" class="date-weeks-label date-values-label">Weeks</label>
-          <input type="number" class="date-weeks-input date-weeks-input" id="weeks" max="39996">
+          <input type="number" class="date-weeks-input date-weeks-input" id="weeks" max="39996" min="0.143"
+            onkeyup="if(this.value > 39996 || this.value < 0.143) this.value = ''">
         </div>
         <div class="date-periods">
           <label for="periods" class="date-periods-label date-values-label">Periods</label>
-          <input type="number" class="date-periods-input date-values-input" id="periods" max="9999">
+          <input type="number" class="date-periods-input date-values-input" id="periods" max="9999" min="0.036"
+            onkeyup="if(this.value > 9999 || this.value < 0.036) this.value = ''">
         </div>
       </div>
       <div class="date-start-buttons">

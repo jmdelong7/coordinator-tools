@@ -1,4 +1,4 @@
-function roundToDecimals(number, decimals) {
+export function roundToDecimals(number, decimals) {
   const factor = Math.pow(10, decimals);
   return Math.round(number * factor) / factor;
 }
@@ -121,6 +121,6 @@ class CpmDisplay {
   }
 }
 
-export default function cpmController() {
+export function cpmController() {
   return new CpmDisplay();
 }
