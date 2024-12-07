@@ -28,38 +28,48 @@ class DateCalculator {
   }
 
   #updateStartDate(newStartDate) {
-    this.startDate = newStartDate;
-    this.endDate = addDate(this.startDate, {weeks: this.weeks});
-    this.#propogateDateDifference(this.endDate, newStartDate);
+    if (newStartDate.getFullYear() <= 2791) {
+      this.startDate = newStartDate;
+      this.endDate = addDate(this.startDate, {weeks: this.weeks});
+      this.#propogateDateDifference(this.endDate, newStartDate);
+    }
   }
 
   #updateEndDate(newEndDate) {
-    this.endDate = newEndDate;
-    this.#propogateDateDifference(newEndDate, this.startDate);
+    if (newEndDate.getFullYear() <= 2791) {
+      this.endDate = newEndDate;
+      this.#propogateDateDifference(newEndDate, this.startDate);
+    }
   }
   
   #updateDays(newDaysValue) {
-    this.days = newDaysValue;
-    this.endDate = addDate(this.startDate, {days: newDaysValue});
-    const difference = differenceInCalendarDays(this.endDate, this.startDate);
-    this.weeks = difference / 7;
-    this.periods = difference / 28;
+    if (newDaysValue > 0 && newDaysValue <= 279972) {
+      this.days = newDaysValue;
+      this.endDate = addDate(this.startDate, {days: newDaysValue});
+      const difference = differenceInCalendarDays(this.endDate, this.startDate);
+      this.weeks = difference / 7;
+      this.periods = difference / 28;
+    }
   }
 
   #updateWeeks(newWeeksValue) {
-    this.weeks = newWeeksValue;
-    this.endDate = addDate(this.startDate, {weeks: newWeeksValue});
-    const difference = differenceInCalendarDays(this.endDate, this.startDate);
-    this.days = difference;
-    this.periods = difference / 28;
+    if (newWeeksValue > 0 && newWeeksValue <= 39996) {
+      this.weeks = newWeeksValue;
+      this.endDate = addDate(this.startDate, {weeks: newWeeksValue});
+      const difference = differenceInCalendarDays(this.endDate, this.startDate);
+      this.days = difference;
+      this.periods = difference / 28;
+    }
   }
 
   #updatePeriods(newPeriodsValue) {
-    this.periods = newPeriodsValue;
-    this.endDate = addDate(this.startDate, {weeks: newPeriodsValue * 4});
-    const difference = differenceInCalendarDays(this.endDate, this.startDate);
-    this.days = difference;
-    this.weeks = difference / 7;
+    if (newPeriodsValue > 0 && newPeriodsValue <= 9999) {
+      this.periods = newPeriodsValue;
+      this.endDate = addDate(this.startDate, {weeks: newPeriodsValue * 4});
+      const difference = differenceInCalendarDays(this.endDate, this.startDate);
+      this.days = difference;
+      this.weeks = difference / 7;
+    }
   }
 
   updateValues({startDate = null, endDate = null, weeks = null, days = null, periods = null}) {
@@ -141,15 +151,34 @@ class DateDisplay {
     this.updateLongDates();
   }
 
-  addInputListener(inputEle, inputName) {
+  valueInputListener(inputEle, inputName) {
     inputEle.addEventListener('input', () => {
-      let val = isNaN(Number(inputEle.value)) ? inputEle.value : Number(inputEle.value);
-      if (inputEle === this.endDate) {
-        let standardDatePlusOne = addDate(standardizeDate(val), {days: 1});
-        val = format(standardDatePlusOne, 'yyyy-MM-dd');
-      }
-      this.dateCalculator.updateValues({[inputName]: val});
+      this.dateCalculator.updateValues({[inputName]: Number(inputEle.value)});
       this.updateExcept(inputName);
+    });
+  }
+
+  startDateListener() {
+    this.startDate.addEventListener('input', () => {
+      const yearMonthDay = this.startDate.value.split('-');
+      const filtered = yearMonthDay.filter((num) => Number(num) <= 0);
+      if (filtered.length === 0) {
+        this.dateCalculator.updateValues({['startDate']: this.startDate.value});
+        this.updateExcept('startDate');
+      }
+    });
+  }
+
+  endDateListener() {
+    this.endDate.addEventListener('input', () => {
+      const yearMonthDay = this.endDate.value.split('-');
+      const filtered = yearMonthDay.filter((num) => Number(num) <= 0);
+      if (filtered.length === 0) {
+        const standardDatePlusOne = addDate(standardizeDate(this.endDate.value), {days: 1});
+        const newEndDate = format(standardDatePlusOne, 'yyyy-MM-dd');
+        this.dateCalculator.updateValues({['endDate']: newEndDate});
+        this.updateExcept('endDate');
+      }
     });
   }
 
@@ -168,22 +197,11 @@ class DateDisplay {
   }
 
   addListeners() {
-    const inputs = this.inputs;
-    let inputName = '';
-    inputs.forEach((input) => {
-      if (input === this.startDate) {
-        inputName = 'startDate';
-      } else if (input === this.endDate) {
-        inputName = 'endDate';
-      } else if (input === this.days) {
-        inputName = 'days';
-      } else if (input === this.weeks) {
-        inputName = 'weeks';
-      } else if (input === this.periods) {
-        inputName = 'periods';
-      }
-      this.addInputListener(input, inputName);
-    });
+    this.valueInputListener(this.days, 'days');
+    this.valueInputListener(this.weeks, 'weeks');
+    this.valueInputListener(this.periods, 'periods');
+    this.startDateListener();
+    this.endDateListener();
     this.addPrevListener();
     this.addNextListener();
   }
