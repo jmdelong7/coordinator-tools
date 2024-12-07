@@ -23,7 +23,7 @@ class DateCalculator {
 
   #propogateDateDifference(endDate, startDate) {
     let difference = differenceInCalendarDays(endDate, startDate);
-    difference < 1 ? difference = 0 : difference;
+    difference < 1 || difference > 279972 ? difference = 0 : difference;
     this.days = difference;
     this.weeks = difference / 7;
     this.periods = difference / 28;
@@ -175,7 +175,7 @@ class DateDisplay {
     this.endDate.addEventListener('input', () => {
       const yearMonthDay = this.endDate.value.split('-');
       const filtered = yearMonthDay.filter((num) => Number(num) <= 0);
-      if (filtered.length === 0) {
+      if (filtered.length === 0 && Number(yearMonthDay[0]) <= 2791) {
         const standardDatePlusOne = addDate(standardizeDate(this.endDate.value), {days: 1});
         const newEndDate = format(standardDatePlusOne, 'yyyy-MM-dd');
         this.dateCalculator.updateValues({['endDate']: newEndDate});
