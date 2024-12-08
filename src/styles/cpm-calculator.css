@@ -85,7 +85,7 @@
 
 .digits {
   padding: 5px 5px 0 5px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
 }
 
 .cpm-button {
@@ -110,7 +110,7 @@
   color: var(--color-error);
   font-size: var(--fs-regular);
   font-weight: var(--fw-regular);
-  padding: 5px 0;
+  padding: 5px 0 10px 0;
 }
 
 #cpm-value-error {

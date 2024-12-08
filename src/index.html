@@ -31,10 +31,6 @@
             onkeyup="if(this.value > 9999 || this.value < 0.036) this.value = ''">
         </div>
       </div>
-      <div class="date-start-buttons">
-        <button class="date-start-button date-start-button-previous" id="prev-monday">Previous Monday</button>
-        <button class="date-start-button date-start-button-next" id="next-monday">Next Monday</button>
-      </div>
       <div class="date-startend">
         <div class="date-start">
           <div class="date-start-inputlabel date-startend-inputlabel">
@@ -50,6 +46,17 @@
           </div>
           <time datetime="" class="date-end-long date-startend-long" id="date-end-long"></time>
         </div>
+      </div>
+      <div class="date-errors">
+        <div class="date-range-error-container">
+          <p class="date-range-error" id="date-range-error">
+            * Date range too large or "End Date" is earlier than "Start Date".
+          </p>
+        </div>
+      </div>
+      <div class="date-start-buttons">
+        <button class="date-start-button date-start-button-previous" id="prev-monday">Previous Monday</button>
+        <button class="date-start-button date-start-button-next" id="next-monday">Next Monday</button>
       </div>
     </div>
   </div>
@@ -77,7 +84,7 @@
       </div>
       <div class="cpm-errors">
         <div class="cpm-value-error-container">
-          <p class="cpm-value-error" id="cpm-value-error">Required: Exactly 2 fields with values greater than 0.</p>
+          <p class="cpm-value-error" id="cpm-value-error">* Required: Exactly 2 fields with values greater than 0.</p>
         </div>
       </div>
       <div class="calculate-clear-buttons">

@@ -113,6 +113,8 @@ class DateDisplay {
     this.prevMonday = document.getElementById('prev-monday');
     this.nextMonday = document.getElementById('next-monday');
 
+    this.dateRangeError = document.getElementById('date-range-error');
+
     this.longStart = document.getElementById('date-start-long');
     this.longEnd = document.getElementById('date-end-long');
     
@@ -181,6 +183,7 @@ class DateDisplay {
         this.dateCalculator.updateValues({['endDate']: newEndDate});
         this.updateExcept('endDate');
       }
+      this.showRangeError();
     });
   }
 
@@ -208,6 +211,17 @@ class DateDisplay {
     this.addNextListener();
   }
 
+  showRangeError() {
+    const difference = differenceInCalendarDays(
+      this.dateCalculator.endDate, this.dateCalculator.startDate);
+    if (difference <= 1 || difference > 279972) {
+      this.inputs.forEach((input) => input.classList.add('show'));
+      this.dateRangeError.classList.add('show');
+    } else {
+      this.inputs.forEach((input) => input.classList.remove('show'));
+      this.dateRangeError.classList.remove('show');
+    }
+  }
 }
 
 export default function dateController(startDate) {

@@ -76,12 +76,30 @@
   font-weight: var(--fw-regular);
 }
 
+.date-values>div>input.show {
+  border: 2px solid var(--color-error);
+}
+
 .date-values>div>input:hover {
   border: 2px solid var(--color-surface-light);
 }
 
+.date-range-error-container {
+  color: var(--color-error);
+  font-size: var(--fs-regular);
+  font-weight: var(--fw-regular);
+  padding: 5px 0 10px 0;
+}
+
+#date-range-error {
+  visibility: hidden;
+}
+
+#date-range-error.show {
+  visibility: visible;
+}
+
 .date-start-buttons {
-  margin-bottom: 20px;
   padding-top: 6px;
 }
 
@@ -92,6 +110,7 @@
   font-weight: var(--fw-regular);
   cursor: pointer;
   border: 2px solid transparent;
+  margin-top: 2px;
 }
 
 .date-start-button:hover {
@@ -109,11 +128,16 @@
 .date-startend {
   display: flex;
   padding-top: 6px;
+  margin-bottom: 5px;
 }
 
 .date-startend-inputlabel {
   display: flex;
   flex-direction: column;
+}
+
+.date-startend-long {
+  border: 2px solid transparent;
 }
 
 .date-end {
@@ -127,6 +151,10 @@
   font-weight: var(--fw-regular);
   padding: 5px;
   cursor: text;
+}
+
+.date-startend-input.show {
+  border: 2px solid var(--color-error);
 }
 
 .date-startend-input:hover {
