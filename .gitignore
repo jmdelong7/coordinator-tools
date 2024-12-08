@@ -2,7 +2,6 @@
 node_modules/
 
 # Build output directory
-dist/
 build/
 
 # Development server
