@@ -119,6 +119,11 @@ body {
   font-family: var(--ff-primary);
   background-color: var(--color-background-main);
   height: 100%;
+  display: flex;
+
+  @media (max-width: 1100px) {
+    flex-direction: column;
+  }
 }
 
 input,
