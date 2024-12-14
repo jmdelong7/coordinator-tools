@@ -90,11 +90,11 @@
 }
 
 .cpm-button {
-  padding: 5px 15px;
   background-color: var(--color-surface-medium);
   color: var(--color-text);
   font-weight: var(--fw-regular);
   cursor: pointer;
+  padding: 5px 15px;
   border: 2px solid transparent;
   margin-top: 3px;
 }

@@ -9,7 +9,7 @@ CPM Calculator
 - Quickly calculate budgets, cpm, or impressions.
 
 I built these tools because they were challenging enough to build and I'll use
-them day to day while I'm learning programming!
+them day to day in my role as a sales coordinator.
 
 # Build the project
 npm run build

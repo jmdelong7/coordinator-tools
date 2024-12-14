@@ -4,6 +4,7 @@ import { taxCalculator } from "./production-tax-calculator";
 import './styles/main.css';
 import './styles/date-calculator.css';
 import './styles/cpm-calculator.css';
+import './styles/tax-calculator.css';
 
 const startDate = '2025-06-02';
 const dateInterface = dateController(startDate);
