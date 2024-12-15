@@ -11,32 +11,43 @@ export function taxCalculator(addOrRemove, taxRate, value) {
 }
 
 const marketTaxRates = {
-  'Amtrak DC': 6,
-  'Atlanta': 8.9,
-  'Austin': 8.25,
-  'Boston': 6.25,
-  'Chicago': 10.5,
-  'Las Vegas': 8.375,
-  'Los Angeles': 10.25,
-  'Minneapolis': 7.375,
-  'New Jersey': 6.625,
-  'New York': 8.875,
-  'Philadelphia': 8,
-  'Pittsburgh': 7,
-  'Portland': 0,
-  'San Francisco': 8.63,
-  'Seattle KCM': 10.35,
-  'Seattle Sound': 10.35
+  'Amtrak DC': '6.00',
+  'Atlanta': '8.90',
+  'Austin': '8.25',
+  'Boston': '6.25',
+  'Chicago': '10.50',
+  'Las Vegas': '8.375',
+  'Los Angeles': '10.25',
+  'Minneapolis': '7.375',
+  'New Jersey': '6.625',
+  'New York': '8.875',
+  'Philadelphia': '8.00',
+  'Pittsburgh': '7.00',
+  'Portland': '0.00',
+  'San Francisco': '8.63',
+  'Seattle KCM': '10.35',
+  'Seattle Sound': '10.35'
 };
 
-class TaxDisplay {
-  constructor(taxRates) {
+export class TaxDisplay {
+  constructor() {
     this.taxRates = marketTaxRates;
     this.input = document.getElementById('cost');
-    this.taxTableContainer = document.getElementById('tax-table-container');
+    this.taxTable = document.getElementById('tax-table');
+  }
+
+  createTaxTableRow(market, taxRate) {
+    return `
+      <div class="tax-table-row" role="button">
+        <p class="tax-table-market">${market}</p>
+        <p class="tax-table-rate">${taxRate}%</p>
+      </div>
+    `;
   }
 
   displayTaxTable() {
-    
+    Object.entries(marketTaxRates).forEach(([market, rate]) => {
+      this.taxTable.innerHTML = this.taxTable.innerHTML + this.createTaxTableRow(market, rate);
+    });
   }
 }

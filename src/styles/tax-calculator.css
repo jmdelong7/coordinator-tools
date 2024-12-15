@@ -68,6 +68,10 @@ div[role="button"] {
   grid-template-columns: 70% 30%;
 }
 
+.tax-table-row:hover {
+  background-color: var(--color-surface-dark);
+}
+
 .tax-table-row:nth-child(-n+1) {
   border-bottom: 1px solid white;
 }
