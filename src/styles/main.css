@@ -11,10 +11,12 @@ https://www.youtube.com/watch?v=h3bTwCqX4ns&ab_channel=KevinPowell
   /* Surface colors */
   --color-surface-dark: #37373a;
   --color-surface-medium: #575757;
+  --color-surface-medium-accent: #464646;
   --color-surface-light: #8b8b8b;
 
   /* Text color */
   --color-text: #FFFFFF;
+  --color-text-accent: #ffffffac;
   --color-error: #e12222;
 
   /* Font family */
