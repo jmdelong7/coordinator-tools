@@ -1,15 +1,5 @@
 import { roundToDecimals } from "./cpm-calculator";
 
-export function taxCalculator(addOrRemove, taxRate, value) {
-  if (addOrRemove === 'add') {
-    const newValue = roundToDecimals(value * (1 + taxRate), 2);
-    return newValue;
-  } else if (addOrRemove === 'remove') {
-    const newValue = roundToDecimals(value / (1 + taxRate), 2);
-    return newValue;
-  }
-}
-
 const marketTaxRates = {
   'Amtrak DC': '6.000',
   'Atlanta': '8.900',
@@ -29,22 +19,53 @@ const marketTaxRates = {
   'Seattle Sound': '10.350'
 };
 
+export function taxCalculator(taxRate, cost) {
+  const taxAdded = roundToDecimals(cost * (1 + taxRate), 2);
+  const taxSubtracted = roundToDecimals(cost / (1 + taxRate), 2);
+
+  return { taxAdded, taxSubtracted };
+}
+
 export class TaxDisplay {
   constructor() {
-    this.taxRates = marketTaxRates;
-    this.input = document.getElementById('cost');
+    this.cost = document.getElementById('tax-cost');
     this.taxTable = document.getElementById('tax-table');
+    this.selectedMarket = 'Chicago';
+    this.prevSelectedMarket = 'Chicago';
     
     this.displayTaxTable();
+    this.addTaxTableListeners();
+    
+    document.getElementById('chicago').classList.add('selectedTaxMarket');
   }
 
   createTaxTableRow(market, taxRate) {
+    const dashCase = market.split(' ').join('-').toLowerCase();
     return `
-      <div class="tax-table-row" role="button">
+      <div class="tax-table-row" role="button" id=${dashCase}>
         <p class="tax-table-market">${market}</p>
         <p class="tax-table-rate">${taxRate} <span class="tax-percent">%</span></p>
       </div>
     `;
+  }
+
+  markSelectedRow(market) {
+    this.prevSelectedMarket = this.selectedMarket;
+    const prevDashCaseMarket = this.prevSelectedMarket.split(' ').join('-').toLowerCase();
+    const prevRow = document.getElementById(prevDashCaseMarket);
+    prevRow.classList.remove('selectedTaxMarket');
+    this.selectedMarket = market;
+  }
+  
+  addTaxTableListeners() {
+    const taxTableRows = [...this.taxTable.children];
+    taxTableRows.forEach((row) => {
+      row.addEventListener('click', () => {
+        const market = row.firstElementChild.textContent;
+        this.markSelectedRow(market);
+        row.classList.add('selectedTaxMarket');
+      });
+    });
   }
 
   displayTaxTable() {
@@ -52,4 +73,5 @@ export class TaxDisplay {
       this.taxTable.innerHTML = this.taxTable.innerHTML + this.createTaxTableRow(market, rate);
     });
   }
+
 }
