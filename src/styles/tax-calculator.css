@@ -98,3 +98,37 @@ div[role="button"] {
   color: var(--color-text-accent);
   font-weight: var(--fw-thin);
 }
+
+.tax-cost,
+.tax-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+  margin-bottom: 25px;
+}
+
+#tax-cost {
+  border: 2px solid transparent;
+  width: 150px;
+  padding: 5px;
+  color: var(--color-text);
+  background-color: var(--color-surface-medium);
+  font-weight: var(--fw-regular);
+}
+
+#tax-cost:hover {
+  border: 2px solid var(--color-surface-light);
+}
+
+#without-tax-digits,
+#with-tax-digits {
+  padding: 5px 5px 0 5px;
+  border: 2px solid transparent;
+  font-weight: var(--fw-regular);
+}
+
+.tax-cost-label,
+.with-tax-text,
+.without-tax-text {
+  margin-bottom: 5px;
+}

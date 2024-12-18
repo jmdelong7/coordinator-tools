@@ -1,4 +1,4 @@
-import { roundToDecimals } from "./cpm-calculator";
+import { roundToDecimals, addStrCommas } from "./cpm-calculator";
 
 const marketTaxRates = {
   'Amtrak DC': '6.000',
@@ -20,8 +20,9 @@ const marketTaxRates = {
 };
 
 export function taxCalculator(taxRate, cost) {
-  const taxAdded = roundToDecimals(cost * (1 + taxRate), 2);
-  const taxSubtracted = roundToDecimals(cost / (1 + taxRate), 2);
+  const rounded = roundToDecimals(taxRate / 100, 4);
+  const taxAdded = roundToDecimals(cost * (1 + rounded), 2);
+  const taxSubtracted = roundToDecimals(cost / (1 + rounded), 2);
 
   return { taxAdded, taxSubtracted };
 }
@@ -35,8 +36,13 @@ export class TaxDisplay {
     
     this.displayTaxTable();
     this.addTaxTableListeners();
+    this.addCostTaxListeners();
     
     document.getElementById('chicago').classList.add('selectedTaxMarket');
+  }
+
+  get selectedMarketTaxRate() {
+    return Number(marketTaxRates[this.selectedMarket]);
   }
 
   createTaxTableRow(market, taxRate) {
@@ -47,6 +53,12 @@ export class TaxDisplay {
         <p class="tax-table-rate">${taxRate} <span class="tax-percent">%</span></p>
       </div>
     `;
+  }
+
+  displayTaxTable() {
+    Object.entries(marketTaxRates).forEach(([market, rate]) => {
+      this.taxTable.innerHTML = this.taxTable.innerHTML + this.createTaxTableRow(market, rate);
+    });
   }
 
   markSelectedRow(market) {
@@ -64,14 +76,21 @@ export class TaxDisplay {
         const market = row.firstElementChild.textContent;
         this.markSelectedRow(market);
         row.classList.add('selectedTaxMarket');
+        this.calculateTax();
       });
     });
   }
 
-  displayTaxTable() {
-    Object.entries(marketTaxRates).forEach(([market, rate]) => {
-      this.taxTable.innerHTML = this.taxTable.innerHTML + this.createTaxTableRow(market, rate);
-    });
+  calculateTax() {
+    let costWithTax = document.getElementById('with-tax-digits');
+    let costWithoutTax = document.getElementById('without-tax-digits');
+    const calculated = taxCalculator(this.selectedMarketTaxRate, Number(this.cost.value));
+    costWithTax.textContent = addStrCommas(String(calculated.taxAdded));
+    costWithoutTax.textContent = addStrCommas(String(calculated.taxSubtracted));
+  }
+
+  addCostTaxListeners() {
+    this.cost.addEventListener('input', () => this.calculateTax());
   }
 
 }

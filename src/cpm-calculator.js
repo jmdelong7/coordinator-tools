@@ -2,7 +2,7 @@ export function roundToDecimals(number, decimals) {
   return Number(number.toFixed(decimals));
 }
 
-function addStrCommas(str) {
+export function addStrCommas(str) {
   const [int, dec] = str.split('.');
   const intSplit = int.split('');
   for (let i = intSplit.length; i > 0; i -= 3) {
