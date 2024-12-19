@@ -39,6 +39,8 @@ export class TaxDisplay {
     this.addCostTaxListeners();
     
     document.getElementById('chicago').classList.add('selectedTaxMarket');
+    this.cost.value = 0;
+    this.calculateTax();
   }
 
   get selectedMarketTaxRate() {
