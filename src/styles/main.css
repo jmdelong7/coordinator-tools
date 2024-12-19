@@ -122,7 +122,7 @@ body {
   background-color: var(--color-background-main);
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto 1fr;
   grid-template-rows: 1fr 1fr;
   width: 1200px;
 
@@ -140,7 +140,6 @@ body {
 .date-calculator {
   grid-column: 2 / 3;
 }
-
 
 input,
 button {
