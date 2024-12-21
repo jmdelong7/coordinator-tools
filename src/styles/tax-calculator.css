@@ -27,8 +27,9 @@
 */
 
 .tax-calculator {
-  margin: 10px;
-  padding: 15px;
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 20px;
   width: fit-content;
   height: fit-content;
   background-color: var(--color-surface-dark);
