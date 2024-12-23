@@ -25,7 +25,7 @@ function cpmCalculator({budget = null, cpm = null, impressions = null}) {
   } else if (cpm === null) {
     cpm = roundToDecimals((budget / impressions) * 1000, 2);
   } else if (impressions === null) {
-    impressions = roundToDecimals((budget / cpm) * 1000, 0);
+    impressions = roundToDecimals((budget / cpm) * 1000, 2);
   }
   return {budget, cpm, impressions};
 }
@@ -41,7 +41,11 @@ class CpmDisplay {
 
     this.calculate = document.getElementById('calculate');
     this.clear = document.getElementById('clear');
+    
     [this.budget, this.cpm, this.impressions].map((input) => input.value = 0);
+    [this.budgetDigits, this.cpmDigits, this.impressionsDigits].map((digits) => {
+      digits.textContent = '0.00';
+    });
 
     this.addListeners();
   }
@@ -116,9 +120,9 @@ class CpmDisplay {
       this.budget.value = 0;
       this.cpm.value = 0;
       this.impressions.value = 0;
-      this.budgetDigits.textContent = 0;
-      this.cpmDigits.textContent = 0;
-      this.impressionsDigits.textContent = 0;
+      this.budgetDigits.textContent = '0.00';
+      this.cpmDigits.textContent = '0.00';
+      this.impressionsDigits.textContent = '0.00';
     });
   }
 }
