@@ -8,6 +8,9 @@ Date Calculator
 CPM Calculator
 - Quickly calculate budgets, cpm, or impressions.
 
+Tax Calculator
+- Used to add tax or remove tax from a value given the selected market.
+
 I built these tools because they were challenging enough to build and I'll use
 them day to day in my role as a sales coordinator.
 

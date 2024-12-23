@@ -20,7 +20,7 @@ const marketTaxRates = {
 };
 
 export function taxCalculator(taxRate, cost) {
-  const rounded = roundToDecimals(taxRate / 100, 4);
+  const rounded = roundToDecimals(taxRate / 100, 5);
   const taxAdded = roundToDecimals(cost * (1 + rounded), 2);
   const taxSubtracted = roundToDecimals(cost / (1 + rounded), 2);
 

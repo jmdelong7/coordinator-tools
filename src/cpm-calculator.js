@@ -10,10 +10,13 @@ export function addStrCommas(str) {
   }
   
   if (dec === undefined || dec === '') {
-    return intSplit.join('');
+    return intSplit.join('') + '.00';
+  } else if (dec.length === 1) {
+    return intSplit.join('') + '.' + dec + '0';
+  } else {
+    return intSplit.join('') + '.' + dec;
   }
   
-  return intSplit.join('') + '.' + dec;
 }
 
 function cpmCalculator({budget = null, cpm = null, impressions = null}) {
