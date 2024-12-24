@@ -85,9 +85,18 @@
   border: 2px solid var(--color-error);
 }
 
-.digits {
+.budget-digits,
+.cpm-digits,
+.impressions-digits {
   padding: 5px 5px 0 5px;
   border: 2px solid transparent;
+  font-weight: var(--fw-regular);
+}
+
+.budget-digits-nums,
+.cpm-digits-nums,
+.impressions-digits-nums {
+  margin-top: 5px;
 }
 
 .cpm-button {

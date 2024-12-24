@@ -37,7 +37,7 @@ class CpmDisplay {
     this.cpm = document.getElementById('cpm');
     this.cpmDigits = document.querySelector('.cpm-digits');
     this.impressions = document.getElementById('impressions');
-    this.impressionsDigits = document.querySelector('.impression-digits');
+    this.impressionsDigits = document.querySelector('.impressions-digits');
 
     this.calculate = document.getElementById('calculate');
     this.clear = document.getElementById('clear');
