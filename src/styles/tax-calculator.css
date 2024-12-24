@@ -122,7 +122,8 @@ div[role="button"] {
 }
 
 #without-tax-digits,
-#with-tax-digits {
+#with-tax-digits,
+#tax-amt-digits {
   padding: 5px 5px 0 5px;
   border: 2px solid transparent;
   font-weight: var(--fw-regular);

@@ -21,10 +21,11 @@ const marketTaxRates = {
 
 export function taxCalculator(taxRate, cost) {
   const rounded = roundToDecimals(taxRate / 100, 5);
+  const taxAmt = roundToDecimals(cost * rounded, 2);
   const taxAdded = roundToDecimals(cost * (1 + rounded), 2);
   const taxSubtracted = roundToDecimals(cost / (1 + rounded), 2);
 
-  return { taxAdded, taxSubtracted };
+  return { taxAdded, taxSubtracted, taxAmt};
 }
 
 export class TaxDisplay {
@@ -86,9 +87,11 @@ export class TaxDisplay {
   calculateTax() {
     let costWithTax = document.getElementById('with-tax-digits');
     let costWithoutTax = document.getElementById('without-tax-digits');
+    let taxAmt = document.getElementById('tax-amt-digits');
     const calculated = taxCalculator(this.selectedMarketTaxRate, Number(this.cost.value));
     costWithTax.textContent = addStrCommas(String(calculated.taxAdded));
     costWithoutTax.textContent = addStrCommas(String(calculated.taxSubtracted));
+    taxAmt.textContent = addStrCommas(String(calculated.taxAmt));
   }
 
   addCostTaxListeners() {
