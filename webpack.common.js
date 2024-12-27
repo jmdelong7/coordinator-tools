@@ -27,7 +27,11 @@ module.exports = {
         generator: {
           filename: 'fonts/[name][ext]'
         }
-      }
+      },
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      }      
     ],
   },
 };
