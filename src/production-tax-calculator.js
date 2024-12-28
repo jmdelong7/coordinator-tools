@@ -40,8 +40,8 @@ export class TaxDisplay {
     this.addCostTaxListeners();
     
     document.getElementById('chicago').classList.add('selectedTaxMarket');
-    this.cost.value = 0;
     this.calculateTax();
+    this.copyListeners();
   }
 
   get selectedMarketTaxRate() {
@@ -96,6 +96,32 @@ export class TaxDisplay {
 
   addCostTaxListeners() {
     this.cost.addEventListener('input', () => this.calculateTax());
+  }
+
+  copyListeners() {
+    const taxBtn = document.getElementById('tax-copy');
+    const costWithTaxBtn = document.getElementById('cost-with-tax-copy');
+    const costWithoutTaxBtn = document.getElementById('cost-without-tax-copy');
+
+    const taxAmt = document.getElementById('tax-amt-digits');
+    const costWithTax = document.getElementById('with-tax-digits');
+    const costWithoutTax = document.getElementById('without-tax-digits');
+
+
+    const removeZeros = (val) => {
+      let split = val.split('.');
+      return split[1] !== '00' ? val : split[0];
+    };
+
+    const addCopyListener = (ele, val) => {
+      ele.addEventListener('click', () => {
+        navigator.clipboard.writeText(removeZeros(val.textContent));
+      });
+    };
+
+    addCopyListener(taxBtn, taxAmt);
+    addCopyListener(costWithTaxBtn, costWithTax);
+    addCopyListener(costWithoutTaxBtn, costWithoutTax);
   }
 
 }
