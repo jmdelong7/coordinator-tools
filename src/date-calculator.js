@@ -201,6 +201,24 @@ class DateDisplay {
     });
   }
 
+  copyListeners() {
+    const startDateCopyBtn = document.getElementById('start-date-copy');
+    const endDateCopyBtn = document.getElementById('end-date-copy');
+
+    const copyDate = (ISODate) => {
+      let split = ISODate.split('-');
+      return split[1] + '/' + split[2] + '/' + split[0];
+    };
+
+    startDateCopyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(copyDate(this.startDate.value));
+    });
+
+    endDateCopyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(copyDate(this.endDate.value));
+    });
+  }
+
   addListeners() {
     this.valueInputListener(this.days, 'days');
     this.valueInputListener(this.weeks, 'weeks');
@@ -209,6 +227,7 @@ class DateDisplay {
     this.endDateListener();
     this.addPrevListener();
     this.addNextListener();
+    this.copyListeners();
   }
 
   showRangeError() {
