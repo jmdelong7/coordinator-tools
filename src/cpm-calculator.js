@@ -42,7 +42,6 @@ class CpmDisplay {
     this.calculate = document.getElementById('calculate');
     this.clear = document.getElementById('clear');
     
-    [this.budget, this.cpm, this.impressions].map((input) => input.value = 0);
     [this.budgetDigits, this.cpmDigits, this.impressionsDigits].map((digits) => {
       digits.textContent = '0.00';
     });
@@ -110,6 +109,27 @@ class CpmDisplay {
     });
   }
 
+  copyListeners() {
+    const budgetCopyBtn = document.getElementById('budget-copy');
+    const cpmCopyBtn = document.getElementById('cpm-copy');
+    const impressionsCopyBtn = document.getElementById('impressions-copy');
+
+    const removeZeros = (val) => {
+      let split = val.split('.');
+      return split[1] !== '00' ? val : split[0];
+    };
+
+    const addCopyListener = (ele, val) => {
+      ele.addEventListener('click', () => {
+        navigator.clipboard.writeText(removeZeros(val.textContent));
+      });
+    };
+
+    addCopyListener(budgetCopyBtn, this.budgetDigits);
+    addCopyListener(cpmCopyBtn, this.cpmDigits);
+    addCopyListener(impressionsCopyBtn, this.impressionsDigits);
+  }
+
   addListeners() {
     this.showCommaValueListeners();
     this.calculate.addEventListener('click', () => {
@@ -124,6 +144,7 @@ class CpmDisplay {
       this.cpmDigits.textContent = '0.00';
       this.impressionsDigits.textContent = '0.00';
     });
+    this.copyListeners();
   }
 }
 

@@ -22,16 +22,43 @@
           <input type="number" name="tax-cost" id="tax-cost" step="1">
         </div>
         <div class="tax-amt-container tax-container">
-          <p class="tax-amt-text">Tax:</p>
-          <p class="tax-amt">$<span id="tax-amt-digits"></span></p>
+          <div class="copy-container">
+            <p class="tax-amt-text">Tax:</p>
+            <abbr title="Copy">
+              <button class="copy" id="tax-copy">
+                <img src="./copy-svg.svg" alt="copy" width="24" height="24">
+              </button>
+            </abbr>
+          </div>
+          <div class="tax-amt-container">
+            <p class="tax-amt">$<span id="tax-amt-digits"></span></p>
+          </div>
         </div>
         <div class="tax-with-tax tax-container">
-          <p class="with-tax-text">Cost With Tax:</p>
-          <p class="with-tax">$<span id="with-tax-digits"></span></p>
+          <div class="copy-container">
+            <p class="with-tax-text">Cost w/ tax:</p>
+            <abbr title="Copy">
+              <button class="copy" id="cost-with-tax-copy">
+                <img src="./copy-svg.svg" alt="copy" width="24" height="24">
+              </button>
+            </abbr>
+          </div>
+          <div class="with-tax-container">
+            <p class="with-tax">$<span id="with-tax-digits"></span></p>
+          </div>
         </div>
         <div class="tax-without-tax tax-container">
-          <p class="without-tax-text">Cost Without Tax:</p>
-          <p class="without-tax">$<span id="without-tax-digits"></span></p>
+          <div class="copy-container">
+            <p class="with-tax-text">Cost w/o tax:</p>
+            <abbr title="Copy">
+              <button class="copy" id="cost-without-tax-copy">
+                <img src="./copy-svg.svg" alt="copy" width="24" height="24">
+              </button>
+            </abbr>
+          </div>
+          <div class="without-tax-container">
+            <p class="without-tax">$<span id="without-tax-digits"></span></p>
+          </div>
         </div>
       </div>
     </div>
@@ -59,14 +86,28 @@
       <div class="date-startend">
         <div class="date-start">
           <div class="date-start-inputlabel date-startend-inputlabel">
-            <label for="start-date" class="date-label date-label-start">Start Date</label>
+            <div class="copy-container">
+              <label for="start-date" class="date-label date-label-start">Start Date</label>
+              <abbr title="Copy">
+                <button class="copy" id="start-date-copy">
+                  <img src="./copy-svg.svg" alt="copy" width="24" height="24">
+                </button>
+              </abbr>
+            </div>
             <input type="date" class="date-startend-input date-input-start" id="start-date">
           </div>
           <time datetime="" class="date-start-long date-startend-long" id="date-start-long"></time>
         </div>
         <div class="date-end">
           <div class="date-end-inputlabel date-startend-inputlabel">
-            <label for="end-date" class="date-label date-label-end">End Date</label>
+            <div class="copy-container">
+              <label for="end-date" class="date-label date-label-end">End Date</label>
+              <abbr title="Copy">
+                <button class="copy" id="end-date-copy">
+                  <img src="./copy-svg.svg" alt="copy" width="24" height="24">
+                </button>
+              </abbr>
+            </div>
             <input type="date" class="date-startend-input date-input-end" id="end-date">
           </div>
           <time datetime="" class="date-end-long date-startend-long" id="date-end-long"></time>
@@ -92,17 +133,40 @@
     <div class="cpm-content">
       <div class="cpm-inputlabels">
         <div class="budget-inputlabel">
-          <label for="budget">Budget</label>
+          <div class="copy-container">
+            <label for="budget">Budget</label>
+            <abbr title="Copy">
+              <button class="copy" id="budget-copy">
+                <img src="./copy-svg.svg" alt="copy" width="24" height="24">
+              </button>
+            </abbr>
+          </div>
           <input type="number" id="budget">
-          <p class="budget-digits-nums">$<span class="budget-digits"></span></p>
+          <p class="budget-digits-nums">$
+            <span class="budget-digits"></span>
+          </p>
         </div>
         <div class="cpm-inputlabel">
-          <label for="cpm">CPM</label>
+          <div class="copy-container">
+            <label for="cpm">CPM</label>
+            <abbr title="Copy">
+              <button class="copy" id="cpm-copy">
+                <img src="./copy-svg.svg" alt="copy" width="24" height="24">
+              </button>
+            </abbr>
+          </div>
           <input type="number" id="cpm">
           <p class="cpm-digits-nums">$<span class="cpm-digits"></span></p>
         </div>
         <div class="impressions-inputlabel">
-          <label for="impressions">Impressions</label>
+          <div class="copy-container">
+            <label for="impressions">Impressions</label>
+            <abbr title="Copy">
+              <button class="copy" id="impressions-copy">
+                <img src="./copy-svg.svg" alt="copy" width="24" height="24">
+              </button>
+            </abbr>
+          </div>
           <input type="number" id="impressions">
           <p class="impressions-digits-nums"><span class="impressions-digits"></span></p>
         </div>

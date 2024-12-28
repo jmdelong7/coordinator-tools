@@ -129,8 +129,6 @@ div[role="button"] {
   font-weight: var(--fw-regular);
 }
 
-.tax-cost-label,
-.with-tax-text,
-.without-tax-text {
+.tax-cost-label {
   margin-bottom: 5px;
 }

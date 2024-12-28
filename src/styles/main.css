@@ -146,3 +146,40 @@ button {
   box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.125);
   border-radius: 5px;
 }
+
+.copy-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.copy {
+  padding: 0 2px;
+  background-color: var(--color-surface-dark);
+  color: var(--color-text);
+  font-weight: var(--fw-thin);
+  font-size: var(--fs-small);
+  cursor: pointer;
+  border: 2px solid transparent;
+  margin-top: 2px;
+  margin-right: 4px;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: none;
+}
+
+.copy:hover {
+  border: 2px solid var(--color-surface-light);
+}
+
+.copy:active {
+  transform: scale(0.90);
+}
+
+img {
+  filter: blur(.35px);
+}
