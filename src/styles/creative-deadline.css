@@ -1,0 +1,65 @@
+.creative-deadline {
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 20px;
+  width: fit-content;
+  height: fit-content;
+  background-color: var(--color-surface-dark);
+  border-radius: 5px;
+  box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.125);
+}
+
+.deadline-header {
+  margin-bottom: 20px;
+}
+
+.deadline-title {
+  font-size: var(--fs-large);
+  font-weight: var(--fw-bold);
+}
+
+.deadline-inputlabel {
+  display: flex;
+  flex-direction: column;
+  width: 265px;
+}
+
+#deadline-label {
+  margin-bottom: 8px;
+}
+
+#deadline-input {
+  border: 2px solid transparent;
+  color: var(--color-text);
+  background-color: var(--color-surface-medium);
+  font-weight: var(--fw-regular);
+  padding: 5px;
+  cursor: text;
+  margin-bottom: 5px;
+}
+
+#deadline-start-long {
+  margin-bottom: 25px;
+}
+
+.deadline-content {
+  font-weight: var(--fw-thin);
+  display: flex;
+  flex-direction: column;
+}
+
+.deadline-date-container:not(:last-child) {
+  margin-bottom: 25px;
+}
+
+.deadline-short {
+  font-weight: var(--fw-regular);
+  border: 2px solid transparent;
+  margin-left: 5px;
+}
+
+.deadline-long {
+  color: var(--color-text-accent);
+  font-style: italic;
+  margin-left: 7px;
+}

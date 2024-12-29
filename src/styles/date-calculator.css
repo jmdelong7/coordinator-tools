@@ -29,6 +29,7 @@
 .date-calculator {
   margin-top: 20px;
   margin-left: 20px;
+  margin-bottom: 20px;
   padding: 20px;
   width: fit-content;
   height: fit-content;
@@ -140,6 +141,9 @@
 
 .date-startend-long {
   border: 2px solid transparent;
+  color: var(--color-text-accent);
+  font-style: italic;
+  margin-left: 5px;
 }
 
 .date-end {
