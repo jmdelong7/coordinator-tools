@@ -1,9 +1,4 @@
-import {
-  subDays,
-  parseISO,
-  startOfDay,
-  format
-} from 'date-fns';
+import { subDays, parseISO, startOfDay, format } from 'date-fns';
 
 function standardizeDate(date) {
   const standardDate = startOfDay(parseISO(date));
@@ -14,27 +9,28 @@ const daysToSubtract = {
   oneweek: 7,
   traditional: 14,
   large: 28,
-  banner: 45
+  banner: 45,
 };
 
 class DeadlineDisplay {
   constructor(startDate) {
     this.startDate = document.getElementById('deadline-input');
+    this.startDateLong = document.getElementById('deadline-start-long');
     this.oneweek = {
       short: document.getElementById('deadline-short-oneweek'),
-      long: document.getElementById('deadline-long-oneweek')
+      long: document.getElementById('deadline-long-oneweek'),
     };
     this.traditional = {
       short: document.getElementById('deadline-short-traditional'),
-      long: document.getElementById('deadline-long-traditional')
+      long: document.getElementById('deadline-long-traditional'),
     };
     this.large = {
       short: document.getElementById('deadline-short-large'),
-      long: document.getElementById('deadline-long-large')
+      long: document.getElementById('deadline-long-large'),
     };
     this.banner = {
       short: document.getElementById('deadline-short-banner'),
-      long: document.getElementById('deadline-long-banner')
+      long: document.getElementById('deadline-long-banner'),
     };
 
     this.startDate.addEventListener('input', () => this.updateDates());
@@ -47,29 +43,34 @@ class DeadlineDisplay {
     if (isNaN(Date.parse(this.startDate.value))) {
       return;
     }
-  
+
     const standardDate = standardizeDate(this.startDate.value);
     const deadlines = {};
-  
+
     Object.entries(daysToSubtract).forEach(([type, days]) => {
       const deadline = subDays(standardDate, days);
       deadlines[type] = {
         short: format(deadline, 'P'),
-        long: format(deadline, 'PPPP')
+        long: format(deadline, 'PPPP'),
       };
     });
-    
+
     this.oneweek.short.textContent = deadlines.oneweek.short;
     this.oneweek.long.textContent = deadlines.oneweek.long;
 
     this.traditional.short.textContent = deadlines.traditional.short;
     this.traditional.long.textContent = deadlines.traditional.long;
-    
+
     this.large.short.textContent = deadlines.large.short;
     this.large.long.textContent = deadlines.large.long;
 
     this.banner.short.textContent = deadlines.banner.short;
-    this.banner.long.textContent = deadlines.banner.long; 
+    this.banner.long.textContent = deadlines.banner.long;
+
+    this.startDateLong.textContent = format(
+      standardizeDate(this.startDate.value),
+      'PPPP'
+    );
   }
 
   copyListeners() {
@@ -85,16 +86,15 @@ class DeadlineDisplay {
     traditionalCopy.addEventListener('click', () => {
       navigator.clipboard.writeText(this.traditional.short.textContent);
     });
-    
+
     largeCopy.addEventListener('click', () => {
       navigator.clipboard.writeText(this.large.short.textContent);
     });
-    
+
     bannerCopy.addEventListener('click', () => {
       navigator.clipboard.writeText(this.banner.short.textContent);
     });
   }
-
 }
 
 export default function deadLineController(startDate) {
