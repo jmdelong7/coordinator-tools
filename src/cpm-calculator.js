@@ -1,5 +1,15 @@
-export function roundToDecimals(number, decimals) {
-  return Number(number.toFixed(decimals));
+export function roundToDecimals(num, decimals) {
+  const factor = 10 ** decimals;
+  // A small epsilon to push borderline numbers (e.g., 1.005 stored as 1.0049999999999999)
+  // over the rounding threshold.
+  //
+  // For 2 decimal places, 1e-7 is usually enough. For more decimals, you can
+  // choose something smaller or dynamically computed. E.g.:
+  //    const epsilon = 1 / (2 * factor);
+  // which works generally, but for simplicity, we'll use 1e-7 here.
+  const epsilon = 1e-7;
+
+  return Math.round((num + epsilon) * factor) / factor;
 }
 
 export function addStrCommas(str) {
@@ -8,7 +18,7 @@ export function addStrCommas(str) {
   for (let i = intSplit.length; i > 0; i -= 3) {
     i !== intSplit.length && intSplit.splice(i, 0, ',');
   }
-  
+
   if (dec === undefined || dec === '') {
     return intSplit.join('') + '.00';
   } else if (dec.length === 1) {
@@ -16,10 +26,9 @@ export function addStrCommas(str) {
   } else {
     return intSplit.join('') + '.' + dec;
   }
-  
 }
 
-function cpmCalculator({budget = null, cpm = null, impressions = null}) {
+function cpmCalculator({ budget = null, cpm = null, impressions = null }) {
   if (budget === null) {
     budget = roundToDecimals((impressions / 1000) * cpm, 2);
   } else if (cpm === null) {
@@ -27,7 +36,7 @@ function cpmCalculator({budget = null, cpm = null, impressions = null}) {
   } else if (impressions === null) {
     impressions = roundToDecimals((budget / cpm) * 1000, 2);
   }
-  return {budget, cpm, impressions};
+  return { budget, cpm, impressions };
 }
 
 class CpmDisplay {
@@ -41,10 +50,12 @@ class CpmDisplay {
 
     this.calculate = document.getElementById('calculate');
     this.clear = document.getElementById('clear');
-    
-    [this.budgetDigits, this.cpmDigits, this.impressionsDigits].map((digits) => {
-      digits.textContent = '0.00';
-    });
+
+    [this.budgetDigits, this.cpmDigits, this.impressionsDigits].map(
+      (digits) => {
+        digits.textContent = '0.00';
+      }
+    );
 
     this.addListeners();
   }
@@ -53,11 +64,11 @@ class CpmDisplay {
     return {
       budget: Number(this.budget.value),
       cpm: Number(this.cpm.value),
-      impressions: Number(this.impressions.value)
+      impressions: Number(this.impressions.value),
     };
   }
 
-  showValueError(show) { 
+  showValueError(show) {
     const valueError = document.getElementById('cpm-value-error');
     const cpmInputs = document.querySelectorAll('.cpm-inputlabels>div>input');
     const cpmInputNodes = [...cpmInputs];
@@ -68,13 +79,14 @@ class CpmDisplay {
       valueError.classList.remove('show');
       cpmInputNodes.forEach((node) => node.classList.remove('show'));
     }
-  } 
+  }
 
   calculateMissingValue() {
     const keys = Object.keys(this.metricPairs);
     const givenValues = Object.fromEntries(
-      keys.filter((key) => this.metricPairs[key] !== 0)
-      .map((key) => [key, this.metricPairs[key]])
+      keys
+        .filter((key) => this.metricPairs[key] !== 0)
+        .map((key) => [key, this.metricPairs[key]])
     );
     if (Object.keys(givenValues).length === 2) {
       this.showValueError(false);
@@ -93,7 +105,9 @@ class CpmDisplay {
       this.impressions.value = newValues.impressions;
       this.budgetDigits.textContent = addStrCommas(this.budget.value);
       this.cpmDigits.textContent = addStrCommas(this.cpm.value);
-      this.impressionsDigits.textContent = addStrCommas(this.impressions.value);
+      this.impressionsDigits.textContent = addStrCommas(
+        this.impressions.value
+      );
     }
   }
 
@@ -105,7 +119,9 @@ class CpmDisplay {
       this.cpmDigits.textContent = addStrCommas(this.cpm.value);
     });
     this.impressions.addEventListener('input', () => {
-      this.impressionsDigits.textContent = addStrCommas(this.impressions.value);
+      this.impressionsDigits.textContent = addStrCommas(
+        this.impressions.value
+      );
     });
   }
 
