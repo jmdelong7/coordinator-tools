@@ -7,7 +7,7 @@ const marketTaxRates = {
   'Boston': '6.250',
   'Chicago': '10.500',
   'Las Vegas': '8.375',
-  'Los Angeles': '10.250',
+  'Los Angeles': '10.500',
   'Minneapolis': '7.375',
   'New Jersey': '6.625',
   'New York': '8.875',
